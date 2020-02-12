@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context=".mdui.maintenanceordercomponents.MaintenanceOrderComponentsActivity">
+    <data>
+        <import type = "com.sap.cloud.android.odata.ipmcontainer.MaintenanceOrderComponent" />
+        <variable name="maintenanceOrderComponent" type="MaintenanceOrderComponent"/>
+        <variable name="handler" type="com.company.mysapcpsdkproject.mdui.maintenanceordercomponents.MaintenanceOrderComponentsDetailFragment" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.core.widget.NestedScrollView
+                android:id="@+id/item_detail_container"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fillViewport="true"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:keyText="Id"
+                        app:valueText="@{maintenanceOrderComponent.getOptionalValue(MaintenanceOrderComponent.id).toString()}" />
+
+                    <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:keyText="ItemNumberOfReservation"
+                        app:valueText="@{maintenanceOrderComponent.getOptionalValue(MaintenanceOrderComponent.itemNumberOfReservation).toString()}" />
+
+                    <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:keyText="NumberOfReservation"
+                        app:valueText="@{maintenanceOrderComponent.getOptionalValue(MaintenanceOrderComponent.numberOfReservation).toString()}" />
+
+                    <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:keyText="OperationNumber"
+                        app:valueText="@{maintenanceOrderComponent.getOptionalValue(MaintenanceOrderComponent.operationNumber).toString()}" />
+
+                    <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:keyText="OrderNumber"
+                        app:valueText="@{maintenanceOrderComponent.getOptionalValue(MaintenanceOrderComponent.orderNumber).toString()}" />
+
+                    <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:keyText="SubOperation"
+                        app:valueText="@{maintenanceOrderComponent.getOptionalValue(MaintenanceOrderComponent.subOperation).toString()}" />
+
+                    <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:keyText="BaseUnit"
+                        app:valueText="@{maintenanceOrderComponent.getOptionalValue(MaintenanceOrderComponent.baseUnit).toString()}" />
+
+                    <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:keyText="ItemCategory"
+                        app:valueText="@{maintenanceOrderComponent.getOptionalValue(MaintenanceOrderComponent.itemCategory).toString()}" />
+
+                    <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:keyText="ItemNumber"
+                        app:valueText="@{maintenanceOrderComponent.getOptionalValue(MaintenanceOrderComponent.itemNumber).toString()}" />
+
+                    <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:keyText="MaterialDescription"
+                        app:valueText="@{maintenanceOrderComponent.getOptionalValue(MaintenanceOrderComponent.materialDescription).toString()}" />
+
+                    <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:keyText="MaterialNumber"
+                        app:valueText="@{maintenanceOrderComponent.getOptionalValue(MaintenanceOrderComponent.materialNumber).toString()}" />
+
+                    <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:keyText="Plant"
+                        app:valueText="@{maintenanceOrderComponent.getOptionalValue(MaintenanceOrderComponent.plant).toString()}" />
+
+                    <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:keyText="PurchaseItemRequisitionNumber"
+                        app:valueText="@{maintenanceOrderComponent.getOptionalValue(MaintenanceOrderComponent.purchaseItemRequisitionNumber).toString()}" />
+
+                    <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:keyText="PurchaseRequisitionNumber"
+                        app:valueText="@{maintenanceOrderComponent.getOptionalValue(MaintenanceOrderComponent.purchaseRequisitionNumber).toString()}" />
+
+                    <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:keyText="QuantityComponent"
+                        app:valueText="@{maintenanceOrderComponent.getOptionalValue(MaintenanceOrderComponent.quantityComponent).toString()}" />
+
+                    <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:keyText="QuantityWithdrawn"
+                        app:valueText="@{maintenanceOrderComponent.getOptionalValue(MaintenanceOrderComponent.quantityWithdrawn).toString()}" />
+
+                    <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:keyText="StorageLocation"
+                        app:valueText="@{maintenanceOrderComponent.getOptionalValue(MaintenanceOrderComponent.storageLocation).toString()}" />
+
+                    <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:keyText="UnloadingPoint"
+                        app:valueText="@{maintenanceOrderComponent.getOptionalValue(MaintenanceOrderComponent.unloadingPoint).toString()}" />
+
+                    <RelativeLayout
+                        style="@style/FioriButton.Flat"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                        android:onClick="@{handler::onNavigationClickedToMaintenanceOrderOperations_MaintenanceOrderOperationDetails}"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/link_label_to_maintenanceorderoperationdetails"
+                            style="@style/FioriButton.Flat"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_centerInParent="true"
+                            android:clickable="false"
+                            android:focusable="false"
+                            android:paddingLeft="16dp"
+                            android:text="MaintenanceOrderOperations" />
+
+                        <Button
+                            android:id="@+id/link_button_to_maintenanceorderoperationdetails"
+                            style="@style/FioriButton.Flat"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerInParent="true"
+                            android:clickable="false"
+                            android:drawableStart="@drawable/ic_arrow_forward_black_24dp"
+                            android:enabled="true"
+                            android:focusable="false" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        style="@style/FioriButton.Flat"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                        android:onClick="@{handler::onNavigationClickedToMaintenanceOrders_MaintenanceOrderDetails}"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/link_label_to_maintenanceorderdetails"
+                            style="@style/FioriButton.Flat"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_centerInParent="true"
+                            android:clickable="false"
+                            android:focusable="false"
+                            android:paddingLeft="16dp"
+                            android:text="MaintenanceOrders" />
+
+                        <Button
+                            android:id="@+id/link_button_to_maintenanceorderdetails"
+                            style="@style/FioriButton.Flat"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerInParent="true"
+                            android:clickable="false"
+                            android:drawableStart="@drawable/ic_arrow_forward_black_24dp"
+                            android:enabled="true"
+                            android:focusable="false" />
+                    </RelativeLayout>
+
+                </LinearLayout>
+            </androidx.core.widget.NestedScrollView>
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+    </LinearLayout>
+</layout>

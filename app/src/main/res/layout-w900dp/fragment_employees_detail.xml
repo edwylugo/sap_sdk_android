@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context=".mdui.employees.EmployeesActivity">
+    <data>
+        <import type = "com.sap.cloud.android.odata.ipmcontainer.Employee" />
+        <variable name="employee" type="Employee"/>
+        <variable name="handler" type="com.company.mysapcpsdkproject.mdui.employees.EmployeesDetailFragment" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="PersonnelNumber"
+            app:valueText="@{employee.getOptionalValue(Employee.personnelNumber).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="EndDate"
+            app:valueText="@{employee.getOptionalValue(Employee.endDate).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="NameOfEmployee"
+            app:valueText="@{employee.getOptionalValue(Employee.nameOfEmployee).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="PersonnelArea"
+            app:valueText="@{employee.getOptionalValue(Employee.personnelArea).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="StartDate"
+            app:valueText="@{employee.getOptionalValue(Employee.startDate).toString()}" />
+
+    </LinearLayout>
+</layout>

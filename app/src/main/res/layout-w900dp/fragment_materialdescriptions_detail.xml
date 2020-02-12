@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context=".mdui.materialdescriptions.MaterialDescriptionsActivity">
+    <data>
+        <import type = "com.sap.cloud.android.odata.ipmcontainer.MaterialDescription" />
+        <variable name="materialDescription" type="MaterialDescription"/>
+        <variable name="handler" type="com.company.mysapcpsdkproject.mdui.materialdescriptions.MaterialDescriptionsDetailFragment" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="Id"
+            app:valueText="@{materialDescription.getOptionalValue(MaterialDescription.id).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="MaterialNumber"
+            app:valueText="@{materialDescription.getOptionalValue(MaterialDescription.materialNumber).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="Plant"
+            app:valueText="@{materialDescription.getOptionalValue(MaterialDescription.plant).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="StorageLocation"
+            app:valueText="@{materialDescription.getOptionalValue(MaterialDescription.storageLocation).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="BaseUnitMeasure"
+            app:valueText="@{materialDescription.getOptionalValue(MaterialDescription.baseUnitMeasure).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="LanguageKey"
+            app:valueText="@{materialDescription.getOptionalValue(MaterialDescription.languageKey).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="MaterialDescriptionShortText"
+            app:valueText="@{materialDescription.getOptionalValue(MaterialDescription.materialDescriptionShortText).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="MaterialType"
+            app:valueText="@{materialDescription.getOptionalValue(MaterialDescription.materialType).toString()}" />
+
+    </LinearLayout>
+</layout>

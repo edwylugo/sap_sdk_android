@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context=".mdui.equipments.EquipmentsActivity">
+    <data>
+        <import type = "com.sap.cloud.android.odata.ipmcontainer.Equipment" />
+        <variable name="equipment" type="Equipment"/>
+        <variable name="handler" type="com.company.mysapcpsdkproject.mdui.equipments.EquipmentsDetailFragment" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="NumberEquipment"
+            app:valueText="@{equipment.getOptionalValue(Equipment.numberEquipment).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="CatalogProfile"
+            app:valueText="@{equipment.getOptionalValue(Equipment.catalogProfile).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="DescriptionTechnicalObject"
+            app:valueText="@{equipment.getOptionalValue(Equipment.descriptionTechnicalObject).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="EquipmentCategory"
+            app:valueText="@{equipment.getOptionalValue(Equipment.equipmentCategory).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="FunctionalLocation"
+            app:valueText="@{equipment.getOptionalValue(Equipment.functionalLocation).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="MaintenancePlant"
+            app:valueText="@{equipment.getOptionalValue(Equipment.maintenancePlant).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="TechnicalObjectType"
+            app:valueText="@{equipment.getOptionalValue(Equipment.technicalObjectType).toString()}" />
+
+    </LinearLayout>
+</layout>

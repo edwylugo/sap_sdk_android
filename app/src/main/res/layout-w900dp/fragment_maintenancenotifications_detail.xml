@@ -1,0 +1,423 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context=".mdui.maintenancenotifications.MaintenanceNotificationsActivity">
+    <data>
+        <import type = "com.sap.cloud.android.odata.ipmcontainer.MaintenanceNotification" />
+        <variable name="maintenanceNotification" type="MaintenanceNotification"/>
+        <variable name="handler" type="com.company.mysapcpsdkproject.mdui.maintenancenotifications.MaintenanceNotificationsDetailFragment" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="NotificationNo"
+            app:valueText="@{maintenanceNotification.getOptionalValue(MaintenanceNotification.notificationNo).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="Assembly"
+            app:valueText="@{maintenanceNotification.getOptionalValue(MaintenanceNotification.assembly).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="BomItemNumber"
+            app:valueText="@{maintenanceNotification.getOptionalValue(MaintenanceNotification.bomItemNumber).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="BreakdownIndicator"
+            app:valueText="@{maintenanceNotification.getOptionalValue(MaintenanceNotification.breakdownIndicator).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="CatalogProfile"
+            app:valueText="@{maintenanceNotification.getOptionalValue(MaintenanceNotification.catalogProfile).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="DateOfNotification"
+            app:valueText="@{maintenanceNotification.getOptionalValue(MaintenanceNotification.dateOfNotification).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="EndMalfunctionDate"
+            app:valueText="@{maintenanceNotification.getOptionalValue(MaintenanceNotification.endMalfunctionDate).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="EndMalfunctionTime"
+            app:valueText="@{maintenanceNotification.getOptionalValue(MaintenanceNotification.endMalfunctionTime).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="EquipmentNumber"
+            app:valueText="@{maintenanceNotification.getOptionalValue(MaintenanceNotification.equipmentNumber).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="FunctionalLocation"
+            app:valueText="@{maintenanceNotification.getOptionalValue(MaintenanceNotification.functionalLocation).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="LocationAccountTechnical"
+            app:valueText="@{maintenanceNotification.getOptionalValue(MaintenanceNotification.locationAccountTechnical).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="MaintenancePlanningPlant"
+            app:valueText="@{maintenanceNotification.getOptionalValue(MaintenanceNotification.maintenancePlanningPlant).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="NamePersonCreatedObject"
+            app:valueText="@{maintenanceNotification.getOptionalValue(MaintenanceNotification.namePersonCreatedObject).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="NamePersonReportingNotification"
+            app:valueText="@{maintenanceNotification.getOptionalValue(MaintenanceNotification.namePersonReportingNotification).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="NotificationType"
+            app:valueText="@{maintenanceNotification.getOptionalValue(MaintenanceNotification.notificationType).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="ObjectID"
+            app:valueText="@{maintenanceNotification.getOptionalValue(MaintenanceNotification.objectID).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="OrderNumber"
+            app:valueText="@{maintenanceNotification.getOptionalValue(MaintenanceNotification.orderNumber).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="Partner"
+            app:valueText="@{maintenanceNotification.getOptionalValue(MaintenanceNotification.partner).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="PersonnelNumber"
+            app:valueText="@{maintenanceNotification.getOptionalValue(MaintenanceNotification.personnelNumber).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="Priority"
+            app:valueText="@{maintenanceNotification.getOptionalValue(MaintenanceNotification.priority).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="PriorityType"
+            app:valueText="@{maintenanceNotification.getOptionalValue(MaintenanceNotification.priorityType).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="ShortText"
+            app:valueText="@{maintenanceNotification.getOptionalValue(MaintenanceNotification.shortText).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="StartMalfunctionDate"
+            app:valueText="@{maintenanceNotification.getOptionalValue(MaintenanceNotification.startMalfunctionDate).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="StartMalfunctionTime"
+            app:valueText="@{maintenanceNotification.getOptionalValue(MaintenanceNotification.startMalfunctionTime).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="StatusProfile"
+            app:valueText="@{maintenanceNotification.getOptionalValue(MaintenanceNotification.statusProfile).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="SystemStatus"
+            app:valueText="@{maintenanceNotification.getOptionalValue(MaintenanceNotification.systemStatus).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="TimeOfNotification"
+            app:valueText="@{maintenanceNotification.getOptionalValue(MaintenanceNotification.timeOfNotification).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="UserStatus"
+            app:valueText="@{maintenanceNotification.getOptionalValue(MaintenanceNotification.userStatus).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="WorkCenter"
+            app:valueText="@{maintenanceNotification.getOptionalValue(MaintenanceNotification.workCenter).toString()}" />
+
+        <RelativeLayout
+            style="@style/FioriButton.Flat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:onClick="@{handler::onNavigationClickedToListTechnicalEquipments_ListTechnicalEquipmentDetails}"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/link_label_to_listtechnicalequipmentdetails"
+                style="@style/FioriButton.Flat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
+                android:clickable="false"
+                android:focusable="false"
+                android:paddingLeft="16dp"
+                android:text="ListTechnicalEquipments" />
+
+            <Button
+                android:id="@+id/link_button_to_listtechnicalequipmentdetails"
+                style="@style/FioriButton.Flat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:clickable="false"
+                android:drawableStart="@drawable/ic_arrow_forward_black_24dp"
+                android:enabled="true"
+                android:focusable="false" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            style="@style/FioriButton.Flat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:onClick="@{handler::onNavigationClickedToLocalInstallStructures_LocalInstallStructureDetails}"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/link_label_to_localinstallstructuredetails"
+                style="@style/FioriButton.Flat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
+                android:clickable="false"
+                android:focusable="false"
+                android:paddingLeft="16dp"
+                android:text="LocalInstallStructures" />
+
+            <Button
+                android:id="@+id/link_button_to_localinstallstructuredetails"
+                style="@style/FioriButton.Flat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:clickable="false"
+                android:drawableStart="@drawable/ic_arrow_forward_black_24dp"
+                android:enabled="true"
+                android:focusable="false" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            style="@style/FioriButton.Flat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:onClick="@{handler::onNavigationClickedToLongTextNotifications_LongTextNotificationDetails}"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/link_label_to_longtextnotificationdetails"
+                style="@style/FioriButton.Flat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
+                android:clickable="false"
+                android:focusable="false"
+                android:paddingLeft="16dp"
+                android:text="LongTextNotifications" />
+
+            <Button
+                android:id="@+id/link_button_to_longtextnotificationdetails"
+                style="@style/FioriButton.Flat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:clickable="false"
+                android:drawableStart="@drawable/ic_arrow_forward_black_24dp"
+                android:enabled="true"
+                android:focusable="false" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            style="@style/FioriButton.Flat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:onClick="@{handler::onNavigationClickedToEquipments_EquipmentDetails}"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/link_label_to_equipmentdetails"
+                style="@style/FioriButton.Flat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
+                android:clickable="false"
+                android:focusable="false"
+                android:paddingLeft="16dp"
+                android:text="Equipments" />
+
+            <Button
+                android:id="@+id/link_button_to_equipmentdetails"
+                style="@style/FioriButton.Flat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:clickable="false"
+                android:drawableStart="@drawable/ic_arrow_forward_black_24dp"
+                android:enabled="true"
+                android:focusable="false" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            style="@style/FioriButton.Flat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:onClick="@{handler::onNavigationClickedToMaintenanceNotificationItems_MaintenanceNotificationItemDetails}"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/link_label_to_maintenancenotificationitemdetails"
+                style="@style/FioriButton.Flat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
+                android:clickable="false"
+                android:focusable="false"
+                android:paddingLeft="16dp"
+                android:text="MaintenanceNotificationItems" />
+
+            <Button
+                android:id="@+id/link_button_to_maintenancenotificationitemdetails"
+                style="@style/FioriButton.Flat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:clickable="false"
+                android:drawableStart="@drawable/ic_arrow_forward_black_24dp"
+                android:enabled="true"
+                android:focusable="false" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            style="@style/FioriButton.Flat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:onClick="@{handler::onNavigationClickedToNotificationTypeTexts_NotificationTypeTextDetails}"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/link_label_to_notificationtypetextdetails"
+                style="@style/FioriButton.Flat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
+                android:clickable="false"
+                android:focusable="false"
+                android:paddingLeft="16dp"
+                android:text="NotificationTypeTexts" />
+
+            <Button
+                android:id="@+id/link_button_to_notificationtypetextdetails"
+                style="@style/FioriButton.Flat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:clickable="false"
+                android:drawableStart="@drawable/ic_arrow_forward_black_24dp"
+                android:enabled="true"
+                android:focusable="false" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            style="@style/FioriButton.Flat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:onClick="@{handler::onNavigationClickedToWorkCenters_WorkCenterDetails}"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/link_label_to_workcenterdetails"
+                style="@style/FioriButton.Flat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
+                android:clickable="false"
+                android:focusable="false"
+                android:paddingLeft="16dp"
+                android:text="WorkCenters" />
+
+            <Button
+                android:id="@+id/link_button_to_workcenterdetails"
+                style="@style/FioriButton.Flat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:clickable="false"
+                android:drawableStart="@drawable/ic_arrow_forward_black_24dp"
+                android:enabled="true"
+                android:focusable="false" />
+        </RelativeLayout>
+
+    </LinearLayout>
+</layout>

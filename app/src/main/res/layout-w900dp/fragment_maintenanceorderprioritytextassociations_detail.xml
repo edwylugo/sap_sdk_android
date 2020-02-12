@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context=".mdui.maintenanceorderprioritytextassociations.MaintenanceOrderPriorityTextAssociationsActivity">
+    <data>
+        <import type = "com.sap.cloud.android.odata.ipmcontainer.MaintenanceOrderPriorityTextAssociation" />
+        <variable name="maintenanceOrderPriorityTextAssociation" type="MaintenanceOrderPriorityTextAssociation"/>
+        <variable name="handler" type="com.company.mysapcpsdkproject.mdui.maintenanceorderprioritytextassociations.MaintenanceOrderPriorityTextAssociationsDetailFragment" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="OrderType"
+            app:valueText="@{maintenanceOrderPriorityTextAssociation.getOptionalValue(MaintenanceOrderPriorityTextAssociation.orderType).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="Priority"
+            app:valueText="@{maintenanceOrderPriorityTextAssociation.getOptionalValue(MaintenanceOrderPriorityTextAssociation.priority).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="PriorityType"
+            app:valueText="@{maintenanceOrderPriorityTextAssociation.getOptionalValue(MaintenanceOrderPriorityTextAssociation.priorityType).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="ProposalMaintenanceType"
+            app:valueText="@{maintenanceOrderPriorityTextAssociation.getOptionalValue(MaintenanceOrderPriorityTextAssociation.proposalMaintenanceType).toString()}" />
+
+    </LinearLayout>
+</layout>

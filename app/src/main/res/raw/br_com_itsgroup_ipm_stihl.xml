@@ -1,0 +1,1392 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<edmx:Edmx xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" Version="1.0">
+    <edmx:DataServices m:DataServiceVersion="1.0" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata">
+        <Schema Namespace="ipm" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="OrderRuleType">
+                <Key>
+                    <PropertyRef Name="OrderType"/>
+                </Key>
+                <Property Name="FutureHorizon" Type="Edm.String" Nullable="true" MaxLength="3"/>
+                <Property Name="OrderType" Type="Edm.String" Nullable="false" MaxLength="4"/>
+                <Property Name="Rule1" Type="Edm.String" Nullable="true" MaxLength="1"/>
+                <Property Name="Rule2" Type="Edm.String" Nullable="true" MaxLength="1"/>
+                <Property Name="Rule3" Type="Edm.String" Nullable="true" MaxLength="1"/>
+            </EntityType>
+            <EntityType Name="MaintenanceNotificationCause">
+                <Key>
+                    <PropertyRef Name="ItemNumber"/>
+                    <PropertyRef Name="NotificationNo"/>
+                    <PropertyRef Name="SequentialNumberCause"/>
+                </Key>
+                <Property Name="CatalogProfile" Type="Edm.String" Nullable="true" MaxLength="9"/>
+                <Property Name="CatalogTypeCauses" Type="Edm.String" Nullable="true" MaxLength="1"/>
+                <Property Name="CauseCode" Type="Edm.String" Nullable="true" MaxLength="4"/>
+                <Property Name="CauseCodeShortText" Type="Edm.String" Nullable="true" MaxLength="40"/>
+                <Property Name="CauseText" Type="Edm.String" Nullable="true" MaxLength="40"/>
+                <Property Name="CodeGroupCauses" Type="Edm.String" Nullable="true" MaxLength="8"/>
+                <Property Name="DateRecordCreated" Type="Edm.DateTime" Nullable="true"/>
+                <Property Name="DeleteDataRecord" Type="Edm.String" Nullable="true" MaxLength="1"/>
+                <Property Name="ItemNumber" Type="Edm.String" Nullable="false" MaxLength="4"/>
+                <Property Name="LanguageIndicatorText" Type="Edm.String" Nullable="true" MaxLength="1"/>
+                <Property Name="NamePersonCreatedObject" Type="Edm.String" Nullable="true" MaxLength="12"/>
+                <Property Name="NotificationNo" Type="Edm.String" Nullable="false" MaxLength="12"/>
+                <Property Name="ObjectLongTextAvailable" Type="Edm.String" Nullable="true" MaxLength="1"/>
+                <Property Name="SequentialNumberCause" Type="Edm.String" Nullable="false" MaxLength="4"/>
+                <Property Name="ShortDescriptionCodeGroup" Type="Edm.String" Nullable="true" MaxLength="40"/>
+                <Property Name="SortNumberCause" Type="Edm.String" Nullable="true" MaxLength="4"/>
+                <Property Name="TimeChange" Type="Edm.Time" Nullable="true"/>
+                <Property Name="TimeRecordAdded" Type="Edm.Time" Nullable="true"/>
+                <NavigationProperty Name="CatalogTypeDetails" Relationship="ipm.MaintenanceNotificationCause_CatalogType_One_ZeroToOne0" FromRole="MaintenanceNotificationCause" ToRole="CatalogType"/>
+                <NavigationProperty Name="MaintenanceNotificationItemDetails" Relationship="ipm.MaintenanceNotificationCause_MaintenanceNotificationItem_Many_ZeroToOne0" FromRole="MaintenanceNotificationCause" ToRole="MaintenanceNotificationItem"/>
+            </EntityType>
+            <EntityType Name="PriorityText">
+                <Key>
+                    <PropertyRef Name="Priority"/>
+                    <PropertyRef Name="PriorityType"/>
+                </Key>
+                <Property Name="LanguageKey" Type="Edm.String" Nullable="true" MaxLength="1"/>
+                <Property Name="Priority" Type="Edm.String" Nullable="false" MaxLength="1"/>
+                <Property Name="PriorityText" Type="Edm.String" Nullable="true" MaxLength="20"/>
+                <Property Name="PriorityType" Type="Edm.String" Nullable="false" MaxLength="2"/>
+            </EntityType>
+            <EntityType Name="CatalogType">
+                <Key>
+                    <PropertyRef Name="Catalog"/>
+                    <PropertyRef Name="CatalogProfile"/>
+                    <PropertyRef Name="CodeGroup"/>
+                </Key>
+                <Property Name="Catalog" Type="Edm.String" Nullable="false" MaxLength="1"/>
+                <Property Name="CatalogProfile" Type="Edm.String" Nullable="false" MaxLength="9"/>
+                <Property Name="CodeGroup" Type="Edm.String" Nullable="false" MaxLength="8"/>
+                <Property Name="DefaultValueSelectedSet" Type="Edm.String" Nullable="true" MaxLength="1"/>
+            </EntityType>
+            <EntityType Name="EnrollOrderType">
+                <Key>
+                    <PropertyRef Name="Id"/>
+                    <PropertyRef Name="PersonnelNumber"/>
+                    <PropertyRef Name="Suser"/>
+                </Key>
+                <Property Name="Id" Type="Edm.Int64" Nullable="false"/>
+                <Property Name="PersonnelNumber" Type="Edm.String" Nullable="false" MaxLength="8"/>
+                <Property Name="Suser" Type="Edm.String" Nullable="false" MaxLength="12"/>
+                <Property Name="TypeOrder" Type="Edm.String" Nullable="true" MaxLength="4"/>
+                <NavigationProperty Name="OrderRuleTypeDetails" Relationship="ipm.EnrollOrderType_OrderRuleType_One_ZeroToOne0" FromRole="EnrollOrderType" ToRole="OrderRuleType"/>
+                <NavigationProperty Name="UserDetails" Relationship="ipm.EnrollOrderType_User_Many_ZeroToOne0" FromRole="EnrollOrderType" ToRole="User"/>
+            </EntityType>
+            <EntityType Name="Employee">
+                <Key>
+                    <PropertyRef Name="PersonnelNumber"/>
+                </Key>
+                <Property Name="EndDate" Type="Edm.DateTime" Nullable="true"/>
+                <Property Name="NameOfEmployee" Type="Edm.String" Nullable="true" MaxLength="40"/>
+                <Property Name="PersonnelArea" Type="Edm.String" Nullable="true" MaxLength="4"/>
+                <Property Name="PersonnelNumber" Type="Edm.String" Nullable="false" MaxLength="8"/>
+                <Property Name="StartDate" Type="Edm.DateTime" Nullable="true"/>
+            </EntityType>
+            <EntityType Name="MaintenanceNotificationItem">
+                <Key>
+                    <PropertyRef Name="ItemNumber"/>
+                    <PropertyRef Name="NotificationNo"/>
+                </Key>
+                <Property Name="Assembly" Type="Edm.String" Nullable="true" MaxLength="18"/>
+                <Property Name="CatalogTypeObjectParts" Type="Edm.String" Nullable="true" MaxLength="1"/>
+                <Property Name="CatalogTypeProblems" Type="Edm.String" Nullable="true" MaxLength="1"/>
+                <Property Name="CodeGroupObjectParts" Type="Edm.String" Nullable="true" MaxLength="8"/>
+                <Property Name="CodeGroupProblem" Type="Edm.String" Nullable="true" MaxLength="8"/>
+                <Property Name="DeleteDataRecord" Type="Edm.String" Nullable="true" MaxLength="1"/>
+                <Property Name="ItemNumber" Type="Edm.String" Nullable="false" MaxLength="4"/>
+                <Property Name="LanguageIndicator" Type="Edm.String" Nullable="true" MaxLength="1"/>
+                <Property Name="NotificationNo" Type="Edm.String" Nullable="false" MaxLength="12"/>
+                <Property Name="ObjectLongTextAvailable" Type="Edm.String" Nullable="true" MaxLength="1"/>
+                <Property Name="ObjectPartCodeShortText" Type="Edm.String" Nullable="true" MaxLength="40"/>
+                <Property Name="ProblemCodeShortText" Type="Edm.String" Nullable="true" MaxLength="40"/>
+                <Property Name="ProblemDamageCode" Type="Edm.String" Nullable="true" MaxLength="4"/>
+                <Property Name="ShortDescriptionCodeGroup" Type="Edm.String" Nullable="true" MaxLength="40"/>
+                <Property Name="SortNumberItem" Type="Edm.String" Nullable="true" MaxLength="4"/>
+                <Property Name="TimeChange" Type="Edm.Time" Nullable="true"/>
+                <Property Name="TimeRecordAdded" Type="Edm.Time" Nullable="true"/>
+                <NavigationProperty Name="InspectionCatalogCodeDetails" Relationship="ipm.MaintenanceNotificationItem_InspectionCatalogCode_One_ZeroToOne0" FromRole="MaintenanceNotificationItem" ToRole="InspectionCatalogCode"/>
+                <NavigationProperty Name="InspectionCatalogCodeGroupDetails" Relationship="ipm.MaintenanceNotificationItem_InspectionCatalogCodeGroup_One_ZeroToOne0" FromRole="MaintenanceNotificationItem" ToRole="InspectionCatalogCodeGroup"/>
+                <NavigationProperty Name="MaintenanceNotificationDetails" Relationship="ipm.MaintenanceNotificationItem_MaintenanceNotification_Many_ZeroToOne0" FromRole="MaintenanceNotificationItem" ToRole="MaintenanceNotification"/>
+                <NavigationProperty Name="MaintenanceNotificationCauseDetails" Relationship="ipm.MaintenanceNotificationCause_MaintenanceNotificationItem_Many_ZeroToOne0" FromRole="MaintenanceNotificationItem" ToRole="MaintenanceNotificationCause"/>
+            </EntityType>
+            <EntityType Name="CauseOfConfirmation">
+                <Key>
+                    <PropertyRef Name="Plant"/>
+                    <PropertyRef Name="ReasonForVariance"/>
+                </Key>
+                <Property Name="DescribingReasonConfirmation" Type="Edm.String" Nullable="true" MaxLength="30"/>
+                <Property Name="LanguageKey" Type="Edm.String" Nullable="true" MaxLength="1"/>
+                <Property Name="Plant" Type="Edm.String" Nullable="false" MaxLength="4"/>
+                <Property Name="ReasonForVariance" Type="Edm.String" Nullable="false" MaxLength="4"/>
+            </EntityType>
+            <EntityType Name="MaintenanceOrder">
+                <Key>
+                    <PropertyRef Name="OrderNumber"/>
+                </Key>
+                <Property Name="MaintenancePlant" Type="Edm.String" Nullable="true" MaxLength="4"/>
+                <Property Name="Assembly" Type="Edm.String" Nullable="true" MaxLength="18"/>
+                <Property Name="BasicFinishDate" Type="Edm.DateTime" Nullable="true"/>
+                <Property Name="BasicStartDate" Type="Edm.DateTime" Nullable="true"/>
+                <Property Name="BomItemNumber" Type="Edm.String" Nullable="true" MaxLength="4"/>
+                <Property Name="Description" Type="Edm.String" Nullable="true" MaxLength="40"/>
+                <Property Name="EquipmentNumber" Type="Edm.String" Nullable="true" MaxLength="18"/>
+                <Property Name="FunctionalLocation" Type="Edm.String" Nullable="true" MaxLength="30"/>
+                <Property Name="MainWorkCenter" Type="Edm.String" Nullable="true" MaxLength="8"/>
+                <Property Name="MaintenanceActivityType" Type="Edm.String" Nullable="true" MaxLength="3"/>
+                <Property Name="MaintenancePlanningPlant" Type="Edm.String" Nullable="true" MaxLength="4"/>
+                <Property Name="NotificationNo" Type="Edm.String" Nullable="true" MaxLength="12"/>
+                <Property Name="OrderNumber" Type="Edm.String" Nullable="false" MaxLength="12"/>
+                <Property Name="OrderType" Type="Edm.String" Nullable="true" MaxLength="4"/>
+                <Property Name="Plant" Type="Edm.String" Nullable="true" MaxLength="4"/>
+                <Property Name="Priority" Type="Edm.String" Nullable="true" MaxLength="1"/>
+                <Property Name="PriorityType" Type="Edm.String" Nullable="true" MaxLength="2"/>
+                <Property Name="StatusProfile" Type="Edm.String" Nullable="true" MaxLength="8"/>
+                <Property Name="SumTotalCategory" Type="Edm.Decimal" Nullable="true" Precision="15" Scale="2"/>
+                <Property Name="SystemStatus" Type="Edm.String" Nullable="true" MaxLength="40"/>
+                <Property Name="UserStatus" Type="Edm.String" Nullable="true" MaxLength="40"/>
+                <Property Name="UserStatusActive" Type="Edm.String" Nullable="true" MaxLength="1"/>
+                <NavigationProperty Name="MaintenanceOrderComponentDetails" Relationship="ipm.MaintenanceOrder_MaintenanceOrderComponent_One_Many0" FromRole="MaintenanceOrder" ToRole="MaintenanceOrderComponent"/>
+                <NavigationProperty Name="EquipmentDetails" Relationship="ipm.MaintenanceOrder_Equipment_Many_ZeroToOne0" FromRole="MaintenanceOrder" ToRole="Equipment"/>
+                <NavigationProperty Name="ListTechnicalEquipmentDetails" Relationship="ipm.MaintenanceOrder_ListTechnicalEquipment_One_ZeroToOne0" FromRole="MaintenanceOrder" ToRole="ListTechnicalEquipment"/>
+                <NavigationProperty Name="LocalInstallStructureDetails" Relationship="ipm.MaintenanceOrder_LocalInstallStructure_One_ZeroToOne0" FromRole="MaintenanceOrder" ToRole="LocalInstallStructure"/>
+                <NavigationProperty Name="MaintenanceOrderOperationDetails" Relationship="ipm.MaintenanceOrder_MaintenanceOrderOperation_One_Many0" FromRole="MaintenanceOrder" ToRole="MaintenanceOrderOperation"/>
+                <NavigationProperty Name="CombinationOrderActivityDetails" Relationship="ipm.MaintenanceOrder_CombinationOrderActivity_One_ZeroToOne0" FromRole="MaintenanceOrder" ToRole="CombinationOrderActivity"/>
+                <NavigationProperty Name="MaintenanceActivityTypeDetails" Relationship="ipm.MaintenanceOrder_MaintenanceActivityType_One_ZeroToOne0" FromRole="MaintenanceOrder" ToRole="MaintenanceActivityType"/>
+                <NavigationProperty Name="MaintenanceActivityTypeDetails1" Relationship="ipm.MaintenanceOrder_MaintenanceActivityType_Many_ZeroToOne0" FromRole="MaintenanceOrder" ToRole="MaintenanceActivityType"/>
+                <NavigationProperty Name="MaintenanceControlParameterDetails" Relationship="ipm.MaintenanceOrder_MaintenanceControlParameter_One_ZeroToOne0" FromRole="MaintenanceOrder" ToRole="MaintenanceControlParameter"/>
+                <NavigationProperty Name="OrderTypeTextDetails" Relationship="ipm.MaintenanceOrder_OrderTypeText_Many_ZeroToOne0" FromRole="MaintenanceOrder" ToRole="OrderTypeText"/>
+                <NavigationProperty Name="WorkCenterDetails" Relationship="ipm.MaintenanceOrder_WorkCenter_Many_ZeroToOne0" FromRole="MaintenanceOrder" ToRole="WorkCenter"/>
+            </EntityType>
+            <EntityType Name="MaintenanceActivityType">
+                <Key>
+                    <PropertyRef Name="MaintenanceActivityType"/>
+                </Key>
+                <Property Name="LanguageKey" Type="Edm.String" Nullable="true" MaxLength="1"/>
+                <Property Name="DescriptionMaintenanceActivityType" Type="Edm.String" Nullable="true" MaxLength="30"/>
+                <Property Name="MaintenanceActivityType" Type="Edm.String" Nullable="false" MaxLength="3"/>
+            </EntityType>
+            <EntityType Name="ActionEvents">
+                <Key>
+                    <PropertyRef Name="IdEvents"/>
+                </Key>
+                <Property Name="ActionEventsType" Type="Edm.String" Nullable="true" MaxLength="3"/>
+                <Property Name="Counter" Type="Edm.String" Nullable="true" MaxLength="3"/>
+                <Property Name="Entity" Type="Edm.String" Nullable="true" MaxLength="1"/>
+                <Property Name="IdEvents" Type="Edm.String" Nullable="false" MaxLength="6"/>
+                <Property Name="IosGetdata" Type="Edm.String" Nullable="true" MaxLength="500"/>
+                <Property Name="IpmStructure" Type="Edm.String" Nullable="true" MaxLength="6"/>
+                <Property Name="Suser" Type="Edm.String" Nullable="true" MaxLength="12"/>
+            </EntityType>
+            <EntityType Name="LongTextNotificationBatch">
+                <Key>
+                    <PropertyRef Name="Id"/>
+                </Key>
+                <Property Name="Id" Type="Edm.Int64" Nullable="false"/>
+                <NavigationProperty Name="LongTextNotificationDetails" Relationship="ipm.LongTextNotificationBatch_LongTextNotification_One_Many0" FromRole="LongTextNotificationBatch" ToRole="LongTextNotification"/>
+            </EntityType>
+            <EntityType Name="MaintenanceOrderPriorityTextAssociation">
+                <Key>
+                    <PropertyRef Name="OrderType"/>
+                    <PropertyRef Name="Priority"/>
+                </Key>
+                <Property Name="OrderType" Type="Edm.String" Nullable="false" MaxLength="4"/>
+                <Property Name="Priority" Type="Edm.String" Nullable="false" MaxLength="1"/>
+                <Property Name="PriorityType" Type="Edm.String" Nullable="true" MaxLength="2"/>
+                <Property Name="ProposalMaintenanceType" Type="Edm.String" Nullable="true" MaxLength="3"/>
+            </EntityType>
+            <EntityType Name="LongTextOrder">
+                <Key>
+                    <PropertyRef Name="OperationNumber"/>
+                    <PropertyRef Name="OrderNumber"/>
+                </Key>
+                <Property Name="LongText" Type="Edm.String" Nullable="true" MaxLength="50000"/>
+                <Property Name="OperationNumber" Type="Edm.String" Nullable="false" MaxLength="4"/>
+                <Property Name="OrderNumber" Type="Edm.String" Nullable="false" MaxLength="12"/>
+                <Property Name="TagColumn" Type="Edm.String" Nullable="true" MaxLength="2"/>
+            </EntityType>
+            <EntityType Name="LongTextOrderBatch">
+                <Key>
+                    <PropertyRef Name="Id"/>
+                </Key>
+                <Property Name="Id" Type="Edm.Int64" Nullable="false"/>
+                <NavigationProperty Name="LongTextOrderDetails" Relationship="ipm.LongTextOrderBatch_LongTextOrder_One_Many0" FromRole="LongTextOrderBatch" ToRole="LongTextOrder"/>
+            </EntityType>
+            <EntityType Name="Confirmation">
+                <Key>
+                    <PropertyRef Name="Id"/>
+                    <PropertyRef Name="OperationNumber"/>
+                    <PropertyRef Name="OrderNumber"/>
+                    <PropertyRef Name="SubOperation"/>
+                </Key>
+                <Property Name="ActivityTypeConfirmation" Type="Edm.String" Nullable="true" MaxLength="6"/>
+                <Property Name="ActualDurationConfirmation" Type="Edm.Decimal" Nullable="true" Precision="5" Scale="1"/>
+                <Property Name="ActualWork" Type="Edm.Decimal" Nullable="true" Precision="7" Scale="2"/>
+                <Property Name="ClearOpenReservations" Type="Edm.String" Nullable="true" MaxLength="1"/>
+                <Property Name="ConfirmationCounter" Type="Edm.String" Nullable="true" MaxLength="8"/>
+                <Property Name="ConfirmationNumber" Type="Edm.String" Nullable="true" MaxLength="10"/>
+                <Property Name="ConfirmationText" Type="Edm.String" Nullable="true" MaxLength="2000"/>
+                <Property Name="ConfirmedDateExecutionFinish" Type="Edm.DateTime" Nullable="true"/>
+                <Property Name="ConfirmedDateStartExecution" Type="Edm.DateTime" Nullable="true"/>
+                <Property Name="ConfirmedTimeFinishExecution" Type="Edm.Time" Nullable="true"/>
+                <Property Name="ConfirmedTimeStartExecution" Type="Edm.Time" Nullable="true"/>
+                <Property Name="CreateTime" Type="Edm.Time" Nullable="true"/>
+                <Property Name="CreationData" Type="Edm.DateTime" Nullable="true"/>
+                <Property Name="DocumentReversed" Type="Edm.String" Nullable="true" MaxLength="1"/>
+                <Property Name="FinalConfirmation" Type="Edm.String" Nullable="true" MaxLength="1"/>
+                <Property Name="ForecastFinishDateOperation" Type="Edm.DateTime" Nullable="true"/>
+                <Property Name="ForecastFinishTimeOperation" Type="Edm.Time" Nullable="true"/>
+                <Property Name="Id" Type="Edm.String" Nullable="false" MaxLength="255"/>
+                <Property Name="NoRemainingWorkExpected" Type="Edm.String" Nullable="true" MaxLength="1"/>
+                <Property Name="OperationNumber" Type="Edm.String" Nullable="false" MaxLength="4"/>
+                <Property Name="OrderNumber" Type="Edm.String" Nullable="false" MaxLength="255"/>
+                <Property Name="OwnerRequestTask" Type="Edm.String" Nullable="true" MaxLength="12"/>
+                <Property Name="PersonnelNumber" Type="Edm.String" Nullable="true" MaxLength="8"/>
+                <Property Name="Plant" Type="Edm.String" Nullable="true" MaxLength="4"/>
+                <Property Name="PostingDate" Type="Edm.DateTime" Nullable="true"/>
+                <Property Name="ReasonForVariance" Type="Edm.String" Nullable="true" MaxLength="4"/>
+                <Property Name="SubOperation" Type="Edm.String" Nullable="false" MaxLength="4"/>
+                <Property Name="UnitActualDuration" Type="Edm.String" Nullable="true" MaxLength="3"/>
+                <Property Name="UnitForWork" Type="Edm.String" Nullable="true" MaxLength="3"/>
+                <Property Name="WorkCenter" Type="Edm.String" Nullable="true" MaxLength="8"/>
+            </EntityType>
+            <EntityType Name="ConfirmationText">
+                <Key>
+                    <PropertyRef Name="CauseOfDeviation"/>
+                </Key>
+                <Property Name="CauseOfDeviation" Type="Edm.String" Nullable="false" MaxLength="4"/>
+                <Property Name="Center" Type="Edm.String" Nullable="true" MaxLength="4"/>
+                <Property Name="DeviationReasonText" Type="Edm.String" Nullable="true" MaxLength="30"/>
+                <Property Name="LanguageCode" Type="Edm.String" Nullable="true" MaxLength="1"/>
+            </EntityType>
+            <EntityType Name="LongTextNotification">
+                <Key>
+                    <PropertyRef Name="NotificationNo"/>
+                </Key>
+                <Property Name="LongText" Type="Edm.String" Nullable="true" MaxLength="3500"/>
+                <Property Name="NotificationNo" Type="Edm.String" Nullable="false" MaxLength="12"/>
+                <Property Name="TagColumn" Type="Edm.String" Nullable="true" MaxLength="2"/>
+            </EntityType>
+            <EntityType Name="WorkCenterDescription">
+                <Key>
+                    <PropertyRef Name="ObjectIdResource"/>
+                </Key>
+                <Property Name="CategoryForResource" Type="Edm.String" Nullable="true" MaxLength="2"/>
+                <Property Name="DateModified" Type="Edm.DateTime" Nullable="true"/>
+                <Property Name="LanguageCode" Type="Edm.String" Nullable="true" MaxLength="1"/>
+                <Property Name="NameUser" Type="Edm.String" Nullable="true" MaxLength="12"/>
+                <Property Name="ObjectIdResource" Type="Edm.String" Nullable="false" MaxLength="8"/>
+                <Property Name="ShortName" Type="Edm.String" Nullable="true" MaxLength="40"/>
+            </EntityType>
+            <EntityType Name="EquipmentBatchs">
+                <Key>
+                    <PropertyRef Name="Id"/>
+                </Key>
+                <Property Name="Id" Type="Edm.Int64" Nullable="false"/>
+                <NavigationProperty Name="EquipmentDetails" Relationship="ipm.EquipmentBatchs_Equipment_One_Many0" FromRole="EquipmentBatchs" ToRole="Equipment"/>
+            </EntityType>
+            <EntityType Name="ListTechnicalEquipment">
+                <Key>
+                    <PropertyRef Name="BomComponent"/>
+                    <PropertyRef Name="EquipmentNumber"/>
+                </Key>
+                <Property Name="BomComponent" Type="Edm.String" Nullable="false" MaxLength="18"/>
+                <Property Name="BomItemNumber" Type="Edm.String" Nullable="true" MaxLength="4"/>
+                <Property Name="BomUsage" Type="Edm.String" Nullable="true" MaxLength="1"/>
+                <Property Name="EquipmentNumber" Type="Edm.String" Nullable="false" MaxLength="18"/>
+                <Property Name="ObjectDescription" Type="Edm.String" Nullable="true" MaxLength="40"/>
+            </EntityType>
+            <EntityType Name="User">
+                <Key>
+                    <PropertyRef Name="PersonnelNumber"/>
+                    <PropertyRef Name="Suser"/>
+                </Key>
+                <Property Name="ActivityType" Type="Edm.String" Nullable="true" MaxLength="6"/>
+                <Property Name="Center" Type="Edm.String" Nullable="true" MaxLength="4"/>
+                <Property Name="Email" Type="Edm.String" Nullable="true" MaxLength="40"/>
+                <Property Name="Name" Type="Edm.String" Nullable="true" MaxLength="30"/>
+                <Property Name="Password" Type="Edm.String" Nullable="true" MaxLength="40"/>
+                <Property Name="PersonnelNumber" Type="Edm.String" Nullable="false" MaxLength="8"/>
+                <Property Name="Status" Type="Edm.String" Nullable="true" MaxLength="1"/>
+                <Property Name="Suser" Type="Edm.String" Nullable="false" MaxLength="12"/>
+                <Property Name="Type" Type="Edm.String" Nullable="true" MaxLength="1"/>
+                <Property Name="WorkCenter" Type="Edm.String" Nullable="true" MaxLength="8"/>
+                <NavigationProperty Name="EnrollOrderTypeDetails" Relationship="ipm.EnrollOrderType_User_Many_ZeroToOne0" FromRole="User" ToRole="EnrollOrderType"/>
+                <NavigationProperty Name="WorkCenterDetails" Relationship="ipm.User_WorkCenter_Many_ZeroToOne0" FromRole="User" ToRole="WorkCenter"/>
+            </EntityType>
+            <EntityType Name="OrderRuleTypeDataBatch">
+                <Key>
+                    <PropertyRef Name="Id"/>
+                </Key>
+                <Property Name="Id" Type="Edm.Int64" Nullable="false"/>
+                <NavigationProperty Name="OrderRuleTypeDetails" Relationship="ipm.OrderRuleTypeDataBatch_OrderRuleType_One_Many0" FromRole="OrderRuleTypeDataBatch" ToRole="OrderRuleType"/>
+            </EntityType>
+            <EntityType Name="InspectionCatalogCodeGroup">
+                <Key>
+                    <PropertyRef Name="Catalog"/>
+                    <PropertyRef Name="CodeGroup"/>
+                </Key>
+                <Property Name="Catalog" Type="Edm.String" Nullable="false" MaxLength="1"/>
+                <Property Name="CodeGroup" Type="Edm.String" Nullable="false" MaxLength="8"/>
+                <Property Name="DataRecordUsed" Type="Edm.String" Nullable="true" MaxLength="1"/>
+                <Property Name="ShortText" Type="Edm.String" Nullable="true" MaxLength="40"/>
+                <Property Name="StatusCodeGroup" Type="Edm.String" Nullable="true" MaxLength="1"/>
+                <Property Name="StatusMasterRecord" Type="Edm.String" Nullable="true" MaxLength="1"/>
+            </EntityType>
+            <EntityType Name="MaintenanceNotificationBatch">
+                <Key>
+                    <PropertyRef Name="Id"/>
+                </Key>
+                <Property Name="Id" Type="Edm.Int64" Nullable="false"/>
+                <NavigationProperty Name="MaintenanceNotificationDetails" Relationship="ipm.MaintenanceNotificationBatch_MaintenanceNotification_One_Many0" FromRole="MaintenanceNotificationBatch" ToRole="MaintenanceNotification"/>
+            </EntityType>
+            <EntityType Name="MaterialDescription">
+                <Key>
+                    <PropertyRef Name="Id"/>
+                    <PropertyRef Name="MaterialNumber"/>
+                    <PropertyRef Name="Plant"/>
+                    <PropertyRef Name="StorageLocation"/>
+                </Key>
+                <Property Name="BaseUnitMeasure" Type="Edm.String" Nullable="true" MaxLength="3"/>
+                <Property Name="Id" Type="Edm.Int64" Nullable="false"/>
+                <Property Name="LanguageKey" Type="Edm.String" Nullable="true" MaxLength="1"/>
+                <Property Name="MaterialDescriptionShortText" Type="Edm.String" Nullable="true" MaxLength="50"/>
+                <Property Name="MaterialNumber" Type="Edm.String" Nullable="false" MaxLength="18"/>
+                <Property Name="MaterialType" Type="Edm.String" Nullable="true" MaxLength="4"/>
+                <Property Name="Plant" Type="Edm.String" Nullable="false" MaxLength="4"/>
+                <Property Name="StorageLocation" Type="Edm.String" Nullable="false" MaxLength="4"/>
+            </EntityType>
+            <EntityType Name="MasterDataBatch">
+                <Key>
+                    <PropertyRef Name="Id"/>
+                </Key>
+                <Property Name="Id" Type="Edm.Int64" Nullable="false"/>
+                <NavigationProperty Name="CatalogTypeDetails" Relationship="ipm.MasterDataBatch_CatalogType_One_Many0" FromRole="MasterDataBatch" ToRole="CatalogType"/>
+                <NavigationProperty Name="CauseOfConfirmationDetails" Relationship="ipm.MasterDataBatch_CauseOfConfirmation_One_Many0" FromRole="MasterDataBatch" ToRole="CauseOfConfirmation"/>
+                <NavigationProperty Name="EmployeeDetails" Relationship="ipm.MasterDataBatch_Employee_One_Many0" FromRole="MasterDataBatch" ToRole="Employee"/>
+                <NavigationProperty Name="EquipmentDetails" Relationship="ipm.MasterDataBatch_Equipment_One_Many0" FromRole="MasterDataBatch" ToRole="Equipment"/>
+                <NavigationProperty Name="CombinationOrderActivityDetails" Relationship="ipm.MasterDataBatch_CombinationOrderActivity_One_Many0" FromRole="MasterDataBatch" ToRole="CombinationOrderActivity"/>
+                <NavigationProperty Name="InspectionCatalogCodeDetails" Relationship="ipm.MasterDataBatch_InspectionCatalogCode_One_Many0" FromRole="MasterDataBatch" ToRole="InspectionCatalogCode"/>
+                <NavigationProperty Name="InspectionCatalogCodeGroupDetails" Relationship="ipm.MasterDataBatch_InspectionCatalogCodeGroup_One_Many0" FromRole="MasterDataBatch" ToRole="InspectionCatalogCodeGroup"/>
+                <NavigationProperty Name="ListTechnicalEquipmentDetails" Relationship="ipm.MasterDataBatch_ListTechnicalEquipment_One_Many0" FromRole="MasterDataBatch" ToRole="ListTechnicalEquipment"/>
+                <NavigationProperty Name="LocalInstallStructureDetails" Relationship="ipm.MasterDataBatch_LocalInstallStructure_One_Many0" FromRole="MasterDataBatch" ToRole="LocalInstallStructure"/>
+                <NavigationProperty Name="MaintenanceControlParameterDetails" Relationship="ipm.MasterDataBatch_MaintenanceControlParameter_One_Many0" FromRole="MasterDataBatch" ToRole="MaintenanceControlParameter"/>
+                <NavigationProperty Name="MaintenanceActivityTypeDetails" Relationship="ipm.MasterDataBatch_MaintenanceActivityType_One_Many0" FromRole="MasterDataBatch" ToRole="MaintenanceActivityType"/>
+                <NavigationProperty Name="MaterialDescriptionDetails" Relationship="ipm.MasterDataBatch_MaterialDescription_One_Many0" FromRole="MasterDataBatch" ToRole="MaterialDescription"/>
+                <NavigationProperty Name="OrderTypeTextDetails" Relationship="ipm.MasterDataBatch_OrderTypeText_One_Many0" FromRole="MasterDataBatch" ToRole="OrderTypeText"/>
+                <NavigationProperty Name="PriorityTextDetails" Relationship="ipm.MasterDataBatch_PriorityText_One_Many0" FromRole="MasterDataBatch" ToRole="PriorityText"/>
+                <NavigationProperty Name="NotificationTypeTextDetails" Relationship="ipm.MasterDataBatch_NotificationTypeText_One_Many0" FromRole="MasterDataBatch" ToRole="NotificationTypeText"/>
+                <NavigationProperty Name="WorkCenterDetails" Relationship="ipm.MasterDataBatch_WorkCenter_One_Many0" FromRole="MasterDataBatch" ToRole="WorkCenter"/>
+            </EntityType>
+            <EntityType Name="MaintenanceOrderBatch">
+                <Key>
+                    <PropertyRef Name="Id"/>
+                </Key>
+                <Property Name="Id" Type="Edm.Int64" Nullable="false"/>
+                <NavigationProperty Name="MaintenanceOrderDetails" Relationship="ipm.MaintenanceOrderBatch_MaintenanceOrder_One_Many0" FromRole="MaintenanceOrderBatch" ToRole="MaintenanceOrder"/>
+            </EntityType>
+            <EntityType Name="CombinationOrderActivity">
+                <Key>
+                    <PropertyRef Name="MaintenanceActivityType"/>
+                    <PropertyRef Name="OrderType"/>
+                </Key>
+                <Property Name="MaintenanceActivityType" Type="Edm.String" Nullable="false" MaxLength="3"/>
+                <Property Name="OrderType" Type="Edm.String" Nullable="false" MaxLength="4"/>
+            </EntityType>
+            <EntityType Name="Equipment">
+                <Key>
+                    <PropertyRef Name="NumberEquipment"/>
+                </Key>
+                <Property Name="CatalogProfile" Type="Edm.String" Nullable="true" MaxLength="9"/>
+                <Property Name="DescriptionTechnicalObject" Type="Edm.String" Nullable="true" MaxLength="40"/>
+                <Property Name="EquipmentCategory" Type="Edm.String" Nullable="true" MaxLength="1"/>
+                <Property Name="FunctionalLocation" Type="Edm.String" Nullable="true" MaxLength="30"/>
+                <Property Name="MaintenancePlant" Type="Edm.String" Nullable="true" MaxLength="4"/>
+                <Property Name="NumberEquipment" Type="Edm.String" Nullable="false" MaxLength="18"/>
+                <Property Name="TechnicalObjectType" Type="Edm.String" Nullable="true" MaxLength="10"/>
+            </EntityType>
+            <EntityType Name="ConfigDataBatch">
+                <Key>
+                    <PropertyRef Name="Id"/>
+                </Key>
+                <Property Name="Id" Type="Edm.Int64" Nullable="false"/>
+                <NavigationProperty Name="UserDetails" Relationship="ipm.ConfigDataBatch_User_One_Many0" FromRole="ConfigDataBatch" ToRole="User"/>
+            </EntityType>
+            <EntityType Name="InspectionCatalog">
+                <Key>
+                    <PropertyRef Name="Catalog"/>
+                </Key>
+                <Property Name="Catalog" Type="Edm.String" Nullable="false" MaxLength="1"/>
+                <Property Name="CodeGroup" Type="Edm.String" Nullable="true" MaxLength="8"/>
+                <Property Name="DataRecordIsUsed" Type="Edm.String" Nullable="true" MaxLength="1"/>
+                <Property Name="DateChangedRecord" Type="Edm.DateTime" Nullable="true"/>
+                <Property Name="DateRecordCreated" Type="Edm.DateTime" Nullable="true"/>
+                <Property Name="NameUserChangedRecord" Type="Edm.String" Nullable="true" MaxLength="12"/>
+                <Property Name="NameUserCreatedRecord" Type="Edm.String" Nullable="true" MaxLength="12"/>
+                <Property Name="StatusOfCodeGroup" Type="Edm.String" Nullable="true" MaxLength="1"/>
+                <Property Name="StatusOfMasterRecord" Type="Edm.String" Nullable="true" MaxLength="1"/>
+            </EntityType>
+            <EntityType Name="WorkCenter">
+                <Key>
+                    <PropertyRef Name="Plant"/>
+                    <PropertyRef Name="WorkCenter"/>
+                </Key>
+                <Property Name="LanguageKey" Type="Edm.String" Nullable="true" MaxLength="1"/>
+                <Property Name="Plant" Type="Edm.String" Nullable="false" MaxLength="4"/>
+                <Property Name="ShortDescription" Type="Edm.String" Nullable="true" MaxLength="40"/>
+                <Property Name="ObjectId" Type="Edm.String" Nullable="true" MaxLength="8"/>
+                <Property Name="WorkCenter" Type="Edm.String" Nullable="false" MaxLength="8"/>
+                <Property Name="WorkCenterCategory" Type="Edm.String" Nullable="true" MaxLength="4"/>
+            </EntityType>
+            <EntityType Name="NotificationTypeText">
+                <Key>
+                    <PropertyRef Name="NotificationType"/>
+                </Key>
+                <Property Name="LanguageKey" Type="Edm.String" Nullable="true" MaxLength="1"/>
+                <Property Name="NotificationType" Type="Edm.String" Nullable="false" MaxLength="2"/>
+                <Property Name="NotificationTypeTexts" Type="Edm.String" Nullable="true" MaxLength="20"/>
+            </EntityType>
+            <EntityType Name="OperationMaterial">
+                <Key>
+                    <PropertyRef Name="MaintenanceOrder"/>
+                    <PropertyRef Name="MaintenanceOrderComponent"/>
+                    <PropertyRef Name="MaintenanceOrderOperation"/>
+                </Key>
+                <Property Name="BaseUnit" Type="Edm.String" Nullable="true" MaxLength="3"/>
+                <Property Name="ItemComponentDescription" Type="Edm.String" Nullable="true" MaxLength="40"/>
+                <Property Name="MaintenanceOrder" Type="Edm.String" Nullable="false" MaxLength="12"/>
+                <Property Name="MaintenanceOrderComponent" Type="Edm.String" Nullable="false" MaxLength="4"/>
+                <Property Name="MaintenanceOrderOperation" Type="Edm.String" Nullable="false" MaxLength="4"/>
+                <Property Name="Material" Type="Edm.String" Nullable="true" MaxLength="40"/>
+                <Property Name="RequirementQuantityInBaseUnit" Type="Edm.Decimal" Nullable="true" Precision="13" Scale="3"/>
+                <Property Name="StorageLocation" Type="Edm.String" Nullable="true" MaxLength="4"/>
+            </EntityType>
+            <EntityType Name="LogSap">
+                <Key>
+                    <PropertyRef Name="IdEvents"/>
+                </Key>
+                <Property Name="ActionEventsType" Type="Edm.String" Nullable="true" MaxLength="3"/>
+                <Property Name="IdEvents" Type="Edm.String" Nullable="false" MaxLength="6"/>
+                <Property Name="IosGetdata" Type="Edm.String" Nullable="true" MaxLength="500"/>
+            </EntityType>
+            <EntityType Name="InspectionCatalogCode">
+                <Key>
+                    <PropertyRef Name="Catalog"/>
+                    <PropertyRef Name="Code"/>
+                    <PropertyRef Name="CodeGroup"/>
+                </Key>
+                <Property Name="Catalog" Type="Edm.String" Nullable="false" MaxLength="1"/>
+                <Property Name="Code" Type="Edm.String" Nullable="false" MaxLength="4"/>
+                <Property Name="CodeGroup" Type="Edm.String" Nullable="false" MaxLength="8"/>
+                <Property Name="DataRecordDeleted" Type="Edm.String" Nullable="true" MaxLength="1"/>
+                <Property Name="DataRecordIsUsed" Type="Edm.String" Nullable="true" MaxLength="1"/>
+                <Property Name="DefectClass" Type="Edm.String" Nullable="true" MaxLength="2"/>
+                <Property Name="FollowUpAction" Type="Edm.String" Nullable="true" MaxLength="8"/>
+                <Property Name="ShortText" Type="Edm.String" Nullable="true" MaxLength="40"/>
+                <Property Name="StatusOfCodeGroup" Type="Edm.String" Nullable="true" MaxLength="1"/>
+                <Property Name="ValidFromDate" Type="Edm.DateTime" Nullable="true"/>
+                <Property Name="VersionNumber" Type="Edm.String" Nullable="true" MaxLength="6"/>
+            </EntityType>
+            <EntityType Name="ListTechnicalEquipmentBatch">
+                <Key>
+                    <PropertyRef Name="Id"/>
+                </Key>
+                <Property Name="Id" Type="Edm.Int64" Nullable="false"/>
+                <NavigationProperty Name="ListTechnicalEquipmentDetails" Relationship="ipm.ListTechnicalEquipmentBatch_ListTechnicalEquipment_One_Many0" FromRole="ListTechnicalEquipmentBatch" ToRole="ListTechnicalEquipment"/>
+            </EntityType>
+            <EntityType Name="LocalInstallStructure">
+                <Key>
+                    <PropertyRef Name="FunctionalLocation"/>
+                </Key>
+                <Property Name="CatalogProfile" Type="Edm.String" Nullable="true" MaxLength="9"/>
+                <Property Name="Category" Type="Edm.String" Nullable="true" MaxLength="1"/>
+                <Property Name="FunctionalLocation" Type="Edm.String" Nullable="false" MaxLength="30"/>
+                <Property Name="MaintenancePlant" Type="Edm.String" Nullable="true" MaxLength="4"/>
+                <Property Name="NameInstallLocation" Type="Edm.String" Nullable="true" MaxLength="40"/>
+            </EntityType>
+            <EntityType Name="OrderTypeText">
+                <Key>
+                    <PropertyRef Name="SalesDocumentType"/>
+                </Key>
+                <Property Name="CompensationTypeText" Type="Edm.String" Nullable="true" MaxLength="30"/>
+                <Property Name="LanguageKey" Type="Edm.String" Nullable="true" MaxLength="1"/>
+                <Property Name="SalesDocumentType" Type="Edm.String" Nullable="false" MaxLength="4"/>
+            </EntityType>
+            <EntityType Name="DeletedEntity">
+                <Key>
+                    <PropertyRef Name="Id"/>
+                </Key>
+                <Property Name="DeletedEntryId" Type="Edm.String" Nullable="true" MaxLength="255"/>
+                <Property Name="EntityType" Type="Edm.String" Nullable="true" MaxLength="255"/>
+                <Property Name="Id" Type="Edm.Int64" Nullable="false"/>
+                <Property Name="RemovalDate" Type="Edm.DateTime" Nullable="true"/>
+            </EntityType>
+            <EntityType Name="MaintenanceOrderComponent">
+                <Key>
+                    <PropertyRef Name="Id"/>
+                    <PropertyRef Name="ItemNumberOfReservation"/>
+                    <PropertyRef Name="NumberOfReservation"/>
+                    <PropertyRef Name="OperationNumber"/>
+                    <PropertyRef Name="OrderNumber"/>
+                    <PropertyRef Name="SubOperation"/>
+                </Key>
+                <Property Name="BaseUnit" Type="Edm.String" Nullable="true" MaxLength="3"/>
+                <Property Name="Id" Type="Edm.Int64" Nullable="false"/>
+                <Property Name="ItemCategory" Type="Edm.String" Nullable="true" MaxLength="1"/>
+                <Property Name="ItemNumber" Type="Edm.String" Nullable="true" MaxLength="4"/>
+                <Property Name="ItemNumberOfReservation" Type="Edm.String" Nullable="false" MaxLength="255"/>
+                <Property Name="MaterialDescription" Type="Edm.String" Nullable="true" MaxLength="40"/>
+                <Property Name="MaterialNumber" Type="Edm.String" Nullable="true" MaxLength="18"/>
+                <Property Name="NumberOfReservation" Type="Edm.String" Nullable="false" MaxLength="10"/>
+                <Property Name="OperationNumber" Type="Edm.String" Nullable="false" MaxLength="4"/>
+                <Property Name="OrderNumber" Type="Edm.String" Nullable="false" MaxLength="12"/>
+                <Property Name="Plant" Type="Edm.String" Nullable="true" MaxLength="4"/>
+                <Property Name="PurchaseItemRequisitionNumber" Type="Edm.String" Nullable="true" MaxLength="255"/>
+                <Property Name="PurchaseRequisitionNumber" Type="Edm.String" Nullable="true" MaxLength="10"/>
+                <Property Name="QuantityComponent" Type="Edm.String" Nullable="true" MaxLength="20"/>
+                <Property Name="QuantityWithdrawn" Type="Edm.String" Nullable="true" MaxLength="20"/>
+                <Property Name="StorageLocation" Type="Edm.String" Nullable="true" MaxLength="4"/>
+                <Property Name="SubOperation" Type="Edm.String" Nullable="false" MaxLength="4"/>
+                <Property Name="UnloadingPoint" Type="Edm.String" Nullable="true" MaxLength="25"/>
+                <NavigationProperty Name="MaintenanceOrderOperationDetails" Relationship="ipm.MaintenanceOrderComponent_MaintenanceOrderOperation_Many_ZeroToOne0" FromRole="MaintenanceOrderComponent" ToRole="MaintenanceOrderOperation"/>
+                <NavigationProperty Name="MaintenanceOrderDetails" Relationship="ipm.MaintenanceOrder_MaintenanceOrderComponent_One_Many0" FromRole="MaintenanceOrderComponent" ToRole="MaintenanceOrder"/>
+            </EntityType>
+            <EntityType Name="Parameters">
+                <Key>
+                    <PropertyRef Name="Id"/>
+                </Key>
+                <Property Name="CounterKeyIpm" Type="Edm.String" Nullable="true" MaxLength="3"/>
+                <Property Name="Id" Type="Edm.String" Nullable="false" MaxLength="10"/>
+                <Property Name="Key1Ipm" Type="Edm.String" Nullable="true" MaxLength="3"/>
+                <Property Name="Key2Ipm" Type="Edm.String" Nullable="true" MaxLength="5"/>
+                <Property Name="Key3Ipm" Type="Edm.String" Nullable="true" MaxLength="7"/>
+                <Property Name="SelectionParametersIpm" Type="Edm.String" Nullable="true" MaxLength="50"/>
+            </EntityType>
+            <EntityType Name="MaintenanceControlParameter">
+                <Key>
+                    <PropertyRef Name="SalesDocumentType"/>
+                </Key>
+                <Property Name="DefaultMaintenanceActivityType" Type="Edm.String" Nullable="true" MaxLength="3"/>
+                <Property Name="LanguageKey" Type="Edm.String" Nullable="true" MaxLength="1"/>
+                <Property Name="PriorityType" Type="Edm.String" Nullable="true" MaxLength="2"/>
+                <Property Name="SalesDocumentType" Type="Edm.String" Nullable="false" MaxLength="4"/>
+            </EntityType>
+            <EntityType Name="MaintenanceOrderOperation">
+                <Key>
+                    <PropertyRef Name="OperationNumber"/>
+                    <PropertyRef Name="OrderNumber"/>
+                    <PropertyRef Name="SubOperation"/>
+                </Key>
+                <Property Name="UnitForWork" Type="Edm.String" Nullable="true" MaxLength="3"/>
+                <Property Name="ActivityType" Type="Edm.String" Nullable="true" MaxLength="6"/>
+                <Property Name="ActualWork" Type="Edm.Decimal" Nullable="true" Precision="13" Scale="3"/>
+                <Property Name="ConfirmationNumber" Type="Edm.String" Nullable="true" MaxLength="10"/>
+                <Property Name="ControlKey" Type="Edm.String" Nullable="true" MaxLength="10"/>
+                <Property Name="EarliestScheduledStartDate" Type="Edm.DateTime" Nullable="true"/>
+                <Property Name="NoRemainingWorkExpected" Type="Edm.String" Nullable="true" MaxLength="1"/>
+                <Property Name="NumberOfCapacities" Type="Edm.Int16" Nullable="true"/>
+                <Property Name="OperationNumber" Type="Edm.String" Nullable="false" MaxLength="4"/>
+                <Property Name="OperationShortText" Type="Edm.String" Nullable="true" MaxLength="40"/>
+                <Property Name="OrderNumber" Type="Edm.String" Nullable="false" MaxLength="12"/>
+                <Property Name="PersonnelNumber" Type="Edm.String" Nullable="true" MaxLength="8"/>
+                <Property Name="Plant" Type="Edm.String" Nullable="true" MaxLength="4"/>
+                <Property Name="SubOperation" Type="Edm.String" Nullable="false" MaxLength="4"/>
+                <Property Name="SystemStatus" Type="Edm.String" Nullable="true" MaxLength="40"/>
+                <Property Name="WorkActivity" Type="Edm.Decimal" Nullable="true" Precision="7" Scale="1"/>
+                <Property Name="WorkCenter" Type="Edm.String" Nullable="true" MaxLength="8"/>
+                <NavigationProperty Name="MaintenanceOrderComponentDetails" Relationship="ipm.MaintenanceOrderComponent_MaintenanceOrderOperation_Many_ZeroToOne0" FromRole="MaintenanceOrderOperation" ToRole="MaintenanceOrderComponent"/>
+                <NavigationProperty Name="ConfirmationDetails" Relationship="ipm.MaintenanceOrderOperation_Confirmation_One_Many0" FromRole="MaintenanceOrderOperation" ToRole="Confirmation"/>
+                <NavigationProperty Name="LongTextOrderDetails" Relationship="ipm.MaintenanceOrderOperation_LongTextOrder_One_ZeroToOne0" FromRole="MaintenanceOrderOperation" ToRole="LongTextOrder"/>
+                <NavigationProperty Name="MaintenanceOrderDetails" Relationship="ipm.MaintenanceOrder_MaintenanceOrderOperation_One_Many0" FromRole="MaintenanceOrderOperation" ToRole="MaintenanceOrder"/>
+                <NavigationProperty Name="WorkCenterDetails" Relationship="ipm.MaintenanceOrderOperation_WorkCenter_One_ZeroToOne0" FromRole="MaintenanceOrderOperation" ToRole="WorkCenter"/>
+            </EntityType>
+            <EntityType Name="CatalogTypeBatchs">
+                <Key>
+                    <PropertyRef Name="Id"/>
+                </Key>
+                <Property Name="Id" Type="Edm.Int64" Nullable="false"/>
+                <NavigationProperty Name="CatalogTypeDetails" Relationship="ipm.CatalogTypeBatchs_CatalogType_One_Many0" FromRole="CatalogTypeBatchs" ToRole="CatalogType"/>
+            </EntityType>
+            <EntityType Name="MaintenanceNotification">
+                <Key>
+                    <PropertyRef Name="NotificationNo"/>
+                </Key>
+                <Property Name="Assembly" Type="Edm.String" Nullable="true" MaxLength="18"/>
+                <Property Name="BomItemNumber" Type="Edm.String" Nullable="true" MaxLength="4"/>
+                <Property Name="BreakdownIndicator" Type="Edm.String" Nullable="true" MaxLength="1"/>
+                <Property Name="CatalogProfile" Type="Edm.String" Nullable="true" MaxLength="9"/>
+                <Property Name="DateOfNotification" Type="Edm.DateTime" Nullable="true"/>
+                <Property Name="EndMalfunctionDate" Type="Edm.DateTime" Nullable="true"/>
+                <Property Name="EndMalfunctionTime" Type="Edm.Time" Nullable="true"/>
+                <Property Name="EquipmentNumber" Type="Edm.String" Nullable="true" MaxLength="18"/>
+                <Property Name="FunctionalLocation" Type="Edm.String" Nullable="true" MaxLength="30"/>
+                <Property Name="LocationAccountTechnical" Type="Edm.String" Nullable="true" MaxLength="12"/>
+                <Property Name="MaintenancePlanningPlant" Type="Edm.String" Nullable="true" MaxLength="4"/>
+                <Property Name="NamePersonCreatedObject" Type="Edm.String" Nullable="true" MaxLength="12"/>
+                <Property Name="NamePersonReportingNotification" Type="Edm.String" Nullable="true" MaxLength="12"/>
+                <Property Name="NotificationNo" Type="Edm.String" Nullable="false" MaxLength="12"/>
+                <Property Name="NotificationType" Type="Edm.String" Nullable="true" MaxLength="2"/>
+                <Property Name="ObjectId" Type="Edm.String" Nullable="true" MaxLength="8"/>
+                <Property Name="OrderNumber" Type="Edm.String" Nullable="true" MaxLength="12"/>
+                <Property Name="Partner" Type="Edm.String" Nullable="true" MaxLength="12"/>
+                <Property Name="PersonnelNumber" Type="Edm.String" Nullable="true" MaxLength="8"/>
+                <Property Name="Priority" Type="Edm.String" Nullable="true" MaxLength="1"/>
+                <Property Name="PriorityType" Type="Edm.String" Nullable="true" MaxLength="2"/>
+                <Property Name="ShortText" Type="Edm.String" Nullable="true" MaxLength="40"/>
+                <Property Name="StartMalfunctionDate" Type="Edm.DateTime" Nullable="true"/>
+                <Property Name="StartMalfunctionTime" Type="Edm.Time" Nullable="true"/>
+                <Property Name="StatusProfile" Type="Edm.String" Nullable="true" MaxLength="8"/>
+                <Property Name="SystemStatus" Type="Edm.String" Nullable="true" MaxLength="40"/>
+                <Property Name="TimeOfNotification" Type="Edm.Time" Nullable="true"/>
+                <Property Name="UserStatus" Type="Edm.String" Nullable="true" MaxLength="40"/>
+                <Property Name="WorkCenter" Type="Edm.String" Nullable="true" MaxLength="8"/>
+                <NavigationProperty Name="ListTechnicalEquipmentDetails" Relationship="ipm.MaintenanceNotification_ListTechnicalEquipment_One_ZeroToOne0" FromRole="MaintenanceNotification" ToRole="ListTechnicalEquipment"/>
+                <NavigationProperty Name="LocalInstallStructureDetails" Relationship="ipm.MaintenanceNotification_LocalInstallStructure_One_ZeroToOne0" FromRole="MaintenanceNotification" ToRole="LocalInstallStructure"/>
+                <NavigationProperty Name="LongTextNotificationDetails" Relationship="ipm.MaintenanceNotification_LongTextNotification_One_ZeroToOne0" FromRole="MaintenanceNotification" ToRole="LongTextNotification"/>
+                <NavigationProperty Name="EquipmentDetails" Relationship="ipm.MaintenanceNotification_Equipment_Many_ZeroToOne0" FromRole="MaintenanceNotification" ToRole="Equipment"/>
+                <NavigationProperty Name="MaintenanceNotificationItemDetails" Relationship="ipm.MaintenanceNotificationItem_MaintenanceNotification_Many_ZeroToOne0" FromRole="MaintenanceNotification" ToRole="MaintenanceNotificationItem"/>
+                <NavigationProperty Name="NotificationTypeTextDetails" Relationship="ipm.MaintenanceNotification_NotificationTypeText_One_ZeroToOne0" FromRole="MaintenanceNotification" ToRole="NotificationTypeText"/>
+                <NavigationProperty Name="WorkCenterDetails" Relationship="ipm.MaintenanceNotification_WorkCenter_One_ZeroToOne0" FromRole="MaintenanceNotification" ToRole="WorkCenter"/>
+            </EntityType>
+            <Association Name="MaintenanceNotificationCause_CatalogType_One_ZeroToOne0">
+                <End Type="ipm.MaintenanceNotificationCause" Multiplicity="1" Role="MaintenanceNotificationCause"/>
+                <End Type="ipm.CatalogType" Multiplicity="0..1" Role="CatalogType"/>
+                <ReferentialConstraint>
+                    <Principal Role="CatalogType">
+                        <PropertyRef Name="Catalog"/>
+                        <PropertyRef Name="CatalogProfile"/>
+                        <PropertyRef Name="CodeGroup"/>
+                    </Principal>
+                    <Dependent Role="MaintenanceNotificationCause">
+                        <PropertyRef Name="CatalogTypeCauses"/>
+                        <PropertyRef Name="CatalogProfile"/>
+                        <PropertyRef Name="CodeGroupCauses"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="MaintenanceNotificationCause_MaintenanceNotificationItem_Many_ZeroToOne0">
+                <End Type="ipm.MaintenanceNotificationCause" Multiplicity="*" Role="MaintenanceNotificationCause"/>
+                <End Type="ipm.MaintenanceNotificationItem" Multiplicity="0..1" Role="MaintenanceNotificationItem"/>
+                <ReferentialConstraint>
+                    <Principal Role="MaintenanceNotificationItem">
+                        <PropertyRef Name="NotificationNo"/>
+                        <PropertyRef Name="ItemNumber"/>
+                    </Principal>
+                    <Dependent Role="MaintenanceNotificationCause">
+                        <PropertyRef Name="NotificationNo"/>
+                        <PropertyRef Name="ItemNumber"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="EnrollOrderType_OrderRuleType_One_ZeroToOne0">
+                <End Type="ipm.EnrollOrderType" Multiplicity="1" Role="EnrollOrderType"/>
+                <End Type="ipm.OrderRuleType" Multiplicity="0..1" Role="OrderRuleType"/>
+                <ReferentialConstraint>
+                    <Principal Role="OrderRuleType">
+                        <PropertyRef Name="OrderType"/>
+                    </Principal>
+                    <Dependent Role="EnrollOrderType">
+                        <PropertyRef Name="TypeOrder"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="EnrollOrderType_User_Many_ZeroToOne0">
+                <End Type="ipm.EnrollOrderType" Multiplicity="*" Role="EnrollOrderType"/>
+                <End Type="ipm.User" Multiplicity="0..1" Role="User"/>
+                <ReferentialConstraint>
+                    <Principal Role="User">
+                        <PropertyRef Name="PersonnelNumber"/>
+                        <PropertyRef Name="Suser"/>
+                    </Principal>
+                    <Dependent Role="EnrollOrderType">
+                        <PropertyRef Name="PersonnelNumber"/>
+                        <PropertyRef Name="Suser"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="MaintenanceNotificationItem_InspectionCatalogCode_One_ZeroToOne0">
+                <End Type="ipm.MaintenanceNotificationItem" Multiplicity="1" Role="MaintenanceNotificationItem"/>
+                <End Type="ipm.InspectionCatalogCode" Multiplicity="0..1" Role="InspectionCatalogCode"/>
+                <ReferentialConstraint>
+                    <Principal Role="InspectionCatalogCode">
+                        <PropertyRef Name="Catalog"/>
+                        <PropertyRef Name="CodeGroup"/>
+                        <PropertyRef Name="Code"/>
+                    </Principal>
+                    <Dependent Role="MaintenanceNotificationItem">
+                        <PropertyRef Name="CatalogTypeProblems"/>
+                        <PropertyRef Name="CodeGroupProblem"/>
+                        <PropertyRef Name="ProblemDamageCode"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="MaintenanceNotificationItem_InspectionCatalogCodeGroup_One_ZeroToOne0">
+                <End Type="ipm.MaintenanceNotificationItem" Multiplicity="1" Role="MaintenanceNotificationItem"/>
+                <End Type="ipm.InspectionCatalogCodeGroup" Multiplicity="0..1" Role="InspectionCatalogCodeGroup"/>
+                <ReferentialConstraint>
+                    <Principal Role="InspectionCatalogCodeGroup">
+                        <PropertyRef Name="Catalog"/>
+                        <PropertyRef Name="CodeGroup"/>
+                    </Principal>
+                    <Dependent Role="MaintenanceNotificationItem">
+                        <PropertyRef Name="CatalogTypeProblems"/>
+                        <PropertyRef Name="CodeGroupProblem"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="MaintenanceNotificationItem_MaintenanceNotification_Many_ZeroToOne0">
+                <End Type="ipm.MaintenanceNotificationItem" Multiplicity="*" Role="MaintenanceNotificationItem"/>
+                <End Type="ipm.MaintenanceNotification" Multiplicity="0..1" Role="MaintenanceNotification"/>
+                <ReferentialConstraint>
+                    <Principal Role="MaintenanceNotification">
+                        <PropertyRef Name="NotificationNo"/>
+                    </Principal>
+                    <Dependent Role="MaintenanceNotificationItem">
+                        <PropertyRef Name="NotificationNo"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="MaintenanceOrder_Equipment_Many_ZeroToOne0">
+                <End Type="ipm.MaintenanceOrder" Multiplicity="*" Role="MaintenanceOrder"/>
+                <End Type="ipm.Equipment" Multiplicity="0..1" Role="Equipment"/>
+                <ReferentialConstraint>
+                    <Principal Role="Equipment">
+                        <PropertyRef Name="NumberEquipment"/>
+                    </Principal>
+                    <Dependent Role="MaintenanceOrder">
+                        <PropertyRef Name="EquipmentNumber"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="MaintenanceOrder_ListTechnicalEquipment_One_ZeroToOne0">
+                <End Type="ipm.MaintenanceOrder" Multiplicity="1" Role="MaintenanceOrder"/>
+                <End Type="ipm.ListTechnicalEquipment" Multiplicity="0..1" Role="ListTechnicalEquipment"/>
+                <ReferentialConstraint>
+                    <Principal Role="ListTechnicalEquipment">
+                        <PropertyRef Name="EquipmentNumber"/>
+                        <PropertyRef Name="BomComponent"/>
+                    </Principal>
+                    <Dependent Role="MaintenanceOrder">
+                        <PropertyRef Name="EquipmentNumber"/>
+                        <PropertyRef Name="Assembly"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="MaintenanceOrder_LocalInstallStructure_One_ZeroToOne0">
+                <End Type="ipm.MaintenanceOrder" Multiplicity="1" Role="MaintenanceOrder"/>
+                <End Type="ipm.LocalInstallStructure" Multiplicity="0..1" Role="LocalInstallStructure"/>
+                <ReferentialConstraint>
+                    <Principal Role="LocalInstallStructure">
+                        <PropertyRef Name="FunctionalLocation"/>
+                    </Principal>
+                    <Dependent Role="MaintenanceOrder">
+                        <PropertyRef Name="FunctionalLocation"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="MaintenanceOrder_CombinationOrderActivity_One_ZeroToOne0">
+                <End Type="ipm.MaintenanceOrder" Multiplicity="1" Role="MaintenanceOrder"/>
+                <End Type="ipm.CombinationOrderActivity" Multiplicity="0..1" Role="CombinationOrderActivity"/>
+                <ReferentialConstraint>
+                    <Principal Role="CombinationOrderActivity">
+                        <PropertyRef Name="OrderType"/>
+                        <PropertyRef Name="MaintenanceActivityType"/>
+                    </Principal>
+                    <Dependent Role="MaintenanceOrder">
+                        <PropertyRef Name="OrderType"/>
+                        <PropertyRef Name="MaintenanceActivityType"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="MaintenanceOrder_MaintenanceActivityType_One_ZeroToOne0">
+                <End Type="ipm.MaintenanceOrder" Multiplicity="1" Role="MaintenanceOrder"/>
+                <End Type="ipm.MaintenanceActivityType" Multiplicity="0..1" Role="MaintenanceActivityType"/>
+                <ReferentialConstraint>
+                    <Principal Role="MaintenanceActivityType">
+                        <PropertyRef Name="MaintenanceActivityType"/>
+                    </Principal>
+                    <Dependent Role="MaintenanceOrder">
+                        <PropertyRef Name="MaintenanceActivityType"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="MaintenanceOrder_MaintenanceActivityType_Many_ZeroToOne0">
+                <End Type="ipm.MaintenanceOrder" Multiplicity="*" Role="MaintenanceOrder"/>
+                <End Type="ipm.MaintenanceActivityType" Multiplicity="0..1" Role="MaintenanceActivityType"/>
+                <ReferentialConstraint>
+                    <Principal Role="MaintenanceActivityType">
+                        <PropertyRef Name="MaintenanceActivityType"/>
+                    </Principal>
+                    <Dependent Role="MaintenanceOrder">
+                        <PropertyRef Name="MaintenanceActivityType"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="MaintenanceOrder_MaintenanceControlParameter_One_ZeroToOne0">
+                <End Type="ipm.MaintenanceOrder" Multiplicity="1" Role="MaintenanceOrder"/>
+                <End Type="ipm.MaintenanceControlParameter" Multiplicity="0..1" Role="MaintenanceControlParameter"/>
+                <ReferentialConstraint>
+                    <Principal Role="MaintenanceControlParameter">
+                        <PropertyRef Name="SalesDocumentType"/>
+                    </Principal>
+                    <Dependent Role="MaintenanceOrder">
+                        <PropertyRef Name="OrderType"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="MaintenanceOrder_OrderTypeText_Many_ZeroToOne0">
+                <End Type="ipm.MaintenanceOrder" Multiplicity="*" Role="MaintenanceOrder"/>
+                <End Type="ipm.OrderTypeText" Multiplicity="0..1" Role="OrderTypeText"/>
+                <ReferentialConstraint>
+                    <Principal Role="OrderTypeText">
+                        <PropertyRef Name="SalesDocumentType"/>
+                    </Principal>
+                    <Dependent Role="MaintenanceOrder">
+                        <PropertyRef Name="OrderType"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="MaintenanceOrder_WorkCenter_Many_ZeroToOne0">
+                <End Type="ipm.MaintenanceOrder" Multiplicity="*" Role="MaintenanceOrder"/>
+                <End Type="ipm.WorkCenter" Multiplicity="0..1" Role="WorkCenter"/>
+                <ReferentialConstraint>
+                    <Principal Role="WorkCenter">
+                        <PropertyRef Name="WorkCenter"/>
+                        <PropertyRef Name="Plant"/>
+                    </Principal>
+                    <Dependent Role="MaintenanceOrder">
+                        <PropertyRef Name="MainWorkCenter"/>
+                        <PropertyRef Name="Plant"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="User_WorkCenter_Many_ZeroToOne0">
+                <End Type="ipm.User" Multiplicity="*" Role="User"/>
+                <End Type="ipm.WorkCenter" Multiplicity="0..1" Role="WorkCenter"/>
+                <ReferentialConstraint>
+                    <Principal Role="WorkCenter">
+                        <PropertyRef Name="WorkCenter"/>
+                        <PropertyRef Name="Plant"/>
+                    </Principal>
+                    <Dependent Role="User">
+                        <PropertyRef Name="WorkCenter"/>
+                        <PropertyRef Name="Center"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="MaintenanceOrderComponent_MaintenanceOrderOperation_Many_ZeroToOne0">
+                <End Type="ipm.MaintenanceOrderComponent" Multiplicity="*" Role="MaintenanceOrderComponent"/>
+                <End Type="ipm.MaintenanceOrderOperation" Multiplicity="0..1" Role="MaintenanceOrderOperation"/>
+                <ReferentialConstraint>
+                    <Principal Role="MaintenanceOrderOperation">
+                        <PropertyRef Name="OperationNumber"/>
+                        <PropertyRef Name="SubOperation"/>
+                        <PropertyRef Name="OrderNumber"/>
+                    </Principal>
+                    <Dependent Role="MaintenanceOrderComponent">
+                        <PropertyRef Name="OperationNumber"/>
+                        <PropertyRef Name="SubOperation"/>
+                        <PropertyRef Name="OrderNumber"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="MaintenanceOrder_MaintenanceOrderComponent_One_Many0">
+                <End Type="ipm.MaintenanceOrder" Multiplicity="0..1" Role="MaintenanceOrder"/>
+                <End Type="ipm.MaintenanceOrderComponent" Multiplicity="*" Role="MaintenanceOrderComponent"/>
+                <ReferentialConstraint>
+                    <Principal Role="MaintenanceOrder">
+                        <PropertyRef Name="OrderNumber"/>
+                    </Principal>
+                    <Dependent Role="MaintenanceOrderComponent">
+                        <PropertyRef Name="OrderNumber"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="MaintenanceOrderOperation_LongTextOrder_One_ZeroToOne0">
+                <End Type="ipm.MaintenanceOrderOperation" Multiplicity="1" Role="MaintenanceOrderOperation"/>
+                <End Type="ipm.LongTextOrder" Multiplicity="0..1" Role="LongTextOrder"/>
+                <ReferentialConstraint>
+                    <Principal Role="LongTextOrder">
+                        <PropertyRef Name="OperationNumber"/>
+                        <PropertyRef Name="OrderNumber"/>
+                    </Principal>
+                    <Dependent Role="MaintenanceOrderOperation">
+                        <PropertyRef Name="OperationNumber"/>
+                        <PropertyRef Name="OrderNumber"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="MaintenanceOrder_MaintenanceOrderOperation_One_Many0">
+                <End Type="ipm.MaintenanceOrder" Multiplicity="0..1" Role="MaintenanceOrder"/>
+                <End Type="ipm.MaintenanceOrderOperation" Multiplicity="*" Role="MaintenanceOrderOperation"/>
+                <ReferentialConstraint>
+                    <Principal Role="MaintenanceOrder">
+                        <PropertyRef Name="OrderNumber"/>
+                    </Principal>
+                    <Dependent Role="MaintenanceOrderOperation">
+                        <PropertyRef Name="OrderNumber"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="MaintenanceOrderOperation_WorkCenter_One_ZeroToOne0">
+                <End Type="ipm.MaintenanceOrderOperation" Multiplicity="1" Role="MaintenanceOrderOperation"/>
+                <End Type="ipm.WorkCenter" Multiplicity="0..1" Role="WorkCenter"/>
+                <ReferentialConstraint>
+                    <Principal Role="WorkCenter">
+                        <PropertyRef Name="WorkCenter"/>
+                        <PropertyRef Name="Plant"/>
+                    </Principal>
+                    <Dependent Role="MaintenanceOrderOperation">
+                        <PropertyRef Name="WorkCenter"/>
+                        <PropertyRef Name="Plant"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="MaintenanceNotification_ListTechnicalEquipment_One_ZeroToOne0">
+                <End Type="ipm.MaintenanceNotification" Multiplicity="1" Role="MaintenanceNotification"/>
+                <End Type="ipm.ListTechnicalEquipment" Multiplicity="0..1" Role="ListTechnicalEquipment"/>
+                <ReferentialConstraint>
+                    <Principal Role="ListTechnicalEquipment">
+                        <PropertyRef Name="BomComponent"/>
+                        <PropertyRef Name="EquipmentNumber"/>
+                    </Principal>
+                    <Dependent Role="MaintenanceNotification">
+                        <PropertyRef Name="Assembly"/>
+                        <PropertyRef Name="EquipmentNumber"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="MaintenanceNotification_LocalInstallStructure_One_ZeroToOne0">
+                <End Type="ipm.MaintenanceNotification" Multiplicity="1" Role="MaintenanceNotification"/>
+                <End Type="ipm.LocalInstallStructure" Multiplicity="0..1" Role="LocalInstallStructure"/>
+                <ReferentialConstraint>
+                    <Principal Role="LocalInstallStructure">
+                        <PropertyRef Name="FunctionalLocation"/>
+                    </Principal>
+                    <Dependent Role="MaintenanceNotification">
+                        <PropertyRef Name="FunctionalLocation"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="MaintenanceNotification_LongTextNotification_One_ZeroToOne0">
+                <End Type="ipm.MaintenanceNotification" Multiplicity="1" Role="MaintenanceNotification"/>
+                <End Type="ipm.LongTextNotification" Multiplicity="0..1" Role="LongTextNotification"/>
+                <ReferentialConstraint>
+                    <Principal Role="LongTextNotification">
+                        <PropertyRef Name="NotificationNo"/>
+                    </Principal>
+                    <Dependent Role="MaintenanceNotification">
+                        <PropertyRef Name="NotificationNo"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="MaintenanceNotification_Equipment_Many_ZeroToOne0">
+                <End Type="ipm.MaintenanceNotification" Multiplicity="*" Role="MaintenanceNotification"/>
+                <End Type="ipm.Equipment" Multiplicity="0..1" Role="Equipment"/>
+                <ReferentialConstraint>
+                    <Principal Role="Equipment">
+                        <PropertyRef Name="NumberEquipment"/>
+                    </Principal>
+                    <Dependent Role="MaintenanceNotification">
+                        <PropertyRef Name="EquipmentNumber"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="MaintenanceNotification_NotificationTypeText_One_ZeroToOne0">
+                <End Type="ipm.MaintenanceNotification" Multiplicity="1" Role="MaintenanceNotification"/>
+                <End Type="ipm.NotificationTypeText" Multiplicity="0..1" Role="NotificationTypeText"/>
+                <ReferentialConstraint>
+                    <Principal Role="NotificationTypeText">
+                        <PropertyRef Name="NotificationType"/>
+                    </Principal>
+                    <Dependent Role="MaintenanceNotification">
+                        <PropertyRef Name="NotificationType"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="MaintenanceNotification_WorkCenter_One_ZeroToOne0">
+                <End Type="ipm.MaintenanceNotification" Multiplicity="1" Role="MaintenanceNotification"/>
+                <End Type="ipm.WorkCenter" Multiplicity="0..1" Role="WorkCenter"/>
+                <ReferentialConstraint>
+                    <Principal Role="WorkCenter">
+                        <PropertyRef Name="WorkCenter"/>
+                        <PropertyRef Name="Plant"/>
+                    </Principal>
+                    <Dependent Role="MaintenanceNotification">
+                        <PropertyRef Name="WorkCenter"/>
+                        <PropertyRef Name="MaintenancePlanningPlant"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="ConfigDataBatch_User_One_Many0">
+                <End Type="ipm.ConfigDataBatch" Multiplicity="1" Role="ConfigDataBatch"/>
+                <End Type="ipm.User" Multiplicity="*" Role="User"/>
+            </Association>
+            <Association Name="ListTechnicalEquipmentBatch_ListTechnicalEquipment_One_Many0">
+                <End Type="ipm.ListTechnicalEquipmentBatch" Multiplicity="1" Role="ListTechnicalEquipmentBatch"/>
+                <End Type="ipm.ListTechnicalEquipment" Multiplicity="*" Role="ListTechnicalEquipment"/>
+            </Association>
+            <Association Name="MaintenanceOrderOperation_Confirmation_One_Many0">
+                <End Type="ipm.MaintenanceOrderOperation" Multiplicity="1" Role="MaintenanceOrderOperation"/>
+                <End Type="ipm.Confirmation" Multiplicity="*" Role="Confirmation"/>
+            </Association>
+            <Association Name="MasterDataBatch_MaintenanceControlParameter_One_Many0">
+                <End Type="ipm.MasterDataBatch" Multiplicity="1" Role="MasterDataBatch"/>
+                <End Type="ipm.MaintenanceControlParameter" Multiplicity="*" Role="MaintenanceControlParameter"/>
+            </Association>
+            <Association Name="MasterDataBatch_CatalogType_One_Many0">
+                <End Type="ipm.MasterDataBatch" Multiplicity="1" Role="MasterDataBatch"/>
+                <End Type="ipm.CatalogType" Multiplicity="*" Role="CatalogType"/>
+            </Association>
+            <Association Name="MasterDataBatch_MaintenanceActivityType_One_Many0">
+                <End Type="ipm.MasterDataBatch" Multiplicity="1" Role="MasterDataBatch"/>
+                <End Type="ipm.MaintenanceActivityType" Multiplicity="*" Role="MaintenanceActivityType"/>
+            </Association>
+            <Association Name="OrderRuleTypeDataBatch_OrderRuleType_One_Many0">
+                <End Type="ipm.OrderRuleTypeDataBatch" Multiplicity="1" Role="OrderRuleTypeDataBatch"/>
+                <End Type="ipm.OrderRuleType" Multiplicity="*" Role="OrderRuleType"/>
+            </Association>
+            <Association Name="MasterDataBatch_InspectionCatalogCodeGroup_One_Many0">
+                <End Type="ipm.MasterDataBatch" Multiplicity="1" Role="MasterDataBatch"/>
+                <End Type="ipm.InspectionCatalogCodeGroup" Multiplicity="*" Role="InspectionCatalogCodeGroup"/>
+            </Association>
+            <Association Name="MasterDataBatch_MaterialDescription_One_Many0">
+                <End Type="ipm.MasterDataBatch" Multiplicity="1" Role="MasterDataBatch"/>
+                <End Type="ipm.MaterialDescription" Multiplicity="*" Role="MaterialDescription"/>
+            </Association>
+            <Association Name="MasterDataBatch_LocalInstallStructure_One_Many0">
+                <End Type="ipm.MasterDataBatch" Multiplicity="1" Role="MasterDataBatch"/>
+                <End Type="ipm.LocalInstallStructure" Multiplicity="*" Role="LocalInstallStructure"/>
+            </Association>
+            <Association Name="MaintenanceNotificationBatch_MaintenanceNotification_One_Many0">
+                <End Type="ipm.MaintenanceNotificationBatch" Multiplicity="1" Role="MaintenanceNotificationBatch"/>
+                <End Type="ipm.MaintenanceNotification" Multiplicity="*" Role="MaintenanceNotification"/>
+            </Association>
+            <Association Name="MasterDataBatch_NotificationTypeText_One_Many0">
+                <End Type="ipm.MasterDataBatch" Multiplicity="1" Role="MasterDataBatch"/>
+                <End Type="ipm.NotificationTypeText" Multiplicity="*" Role="NotificationTypeText"/>
+            </Association>
+            <Association Name="MasterDataBatch_OrderTypeText_One_Many0">
+                <End Type="ipm.MasterDataBatch" Multiplicity="1" Role="MasterDataBatch"/>
+                <End Type="ipm.OrderTypeText" Multiplicity="*" Role="OrderTypeText"/>
+            </Association>
+            <Association Name="MasterDataBatch_Employee_One_Many0">
+                <End Type="ipm.MasterDataBatch" Multiplicity="1" Role="MasterDataBatch"/>
+                <End Type="ipm.Employee" Multiplicity="*" Role="Employee"/>
+            </Association>
+            <Association Name="MasterDataBatch_PriorityText_One_Many0">
+                <End Type="ipm.MasterDataBatch" Multiplicity="1" Role="MasterDataBatch"/>
+                <End Type="ipm.PriorityText" Multiplicity="*" Role="PriorityText"/>
+            </Association>
+            <Association Name="MasterDataBatch_InspectionCatalogCode_One_Many0">
+                <End Type="ipm.MasterDataBatch" Multiplicity="1" Role="MasterDataBatch"/>
+                <End Type="ipm.InspectionCatalogCode" Multiplicity="*" Role="InspectionCatalogCode"/>
+            </Association>
+            <Association Name="MasterDataBatch_Equipment_One_Many0">
+                <End Type="ipm.MasterDataBatch" Multiplicity="1" Role="MasterDataBatch"/>
+                <End Type="ipm.Equipment" Multiplicity="*" Role="Equipment"/>
+            </Association>
+            <Association Name="LongTextNotificationBatch_LongTextNotification_One_Many0">
+                <End Type="ipm.LongTextNotificationBatch" Multiplicity="1" Role="LongTextNotificationBatch"/>
+                <End Type="ipm.LongTextNotification" Multiplicity="*" Role="LongTextNotification"/>
+            </Association>
+            <Association Name="MasterDataBatch_ListTechnicalEquipment_One_Many0">
+                <End Type="ipm.MasterDataBatch" Multiplicity="1" Role="MasterDataBatch"/>
+                <End Type="ipm.ListTechnicalEquipment" Multiplicity="*" Role="ListTechnicalEquipment"/>
+            </Association>
+            <Association Name="EquipmentBatchs_Equipment_One_Many0">
+                <End Type="ipm.EquipmentBatchs" Multiplicity="1" Role="EquipmentBatchs"/>
+                <End Type="ipm.Equipment" Multiplicity="*" Role="Equipment"/>
+            </Association>
+            <Association Name="MaintenanceOrderBatch_MaintenanceOrder_One_Many0">
+                <End Type="ipm.MaintenanceOrderBatch" Multiplicity="1" Role="MaintenanceOrderBatch"/>
+                <End Type="ipm.MaintenanceOrder" Multiplicity="*" Role="MaintenanceOrder"/>
+            </Association>
+            <Association Name="LongTextOrderBatch_LongTextOrder_One_Many0">
+                <End Type="ipm.LongTextOrderBatch" Multiplicity="1" Role="LongTextOrderBatch"/>
+                <End Type="ipm.LongTextOrder" Multiplicity="*" Role="LongTextOrder"/>
+            </Association>
+            <Association Name="CatalogTypeBatchs_CatalogType_One_Many0">
+                <End Type="ipm.CatalogTypeBatchs" Multiplicity="1" Role="CatalogTypeBatchs"/>
+                <End Type="ipm.CatalogType" Multiplicity="*" Role="CatalogType"/>
+            </Association>
+            <Association Name="MasterDataBatch_CauseOfConfirmation_One_Many0">
+                <End Type="ipm.MasterDataBatch" Multiplicity="1" Role="MasterDataBatch"/>
+                <End Type="ipm.CauseOfConfirmation" Multiplicity="*" Role="CauseOfConfirmation"/>
+            </Association>
+            <Association Name="MasterDataBatch_WorkCenter_One_Many0">
+                <End Type="ipm.MasterDataBatch" Multiplicity="1" Role="MasterDataBatch"/>
+                <End Type="ipm.WorkCenter" Multiplicity="*" Role="WorkCenter"/>
+            </Association>
+            <Association Name="MasterDataBatch_CombinationOrderActivity_One_Many0">
+                <End Type="ipm.MasterDataBatch" Multiplicity="1" Role="MasterDataBatch"/>
+                <End Type="ipm.CombinationOrderActivity" Multiplicity="*" Role="CombinationOrderActivity"/>
+            </Association>
+            <EntityContainer Name="ipmContainer" m:IsDefaultEntityContainer="true">
+                <EntitySet Name="OrderRuleTypes" EntityType="ipm.OrderRuleType"/>
+                <EntitySet Name="MaintenanceNotificationCauses" EntityType="ipm.MaintenanceNotificationCause"/>
+                <EntitySet Name="PriorityTexts" EntityType="ipm.PriorityText"/>
+                <EntitySet Name="CatalogTypes" EntityType="ipm.CatalogType"/>
+                <EntitySet Name="EnrollOrderTypes" EntityType="ipm.EnrollOrderType"/>
+                <EntitySet Name="Employees" EntityType="ipm.Employee"/>
+                <EntitySet Name="MaintenanceNotificationItems" EntityType="ipm.MaintenanceNotificationItem"/>
+                <EntitySet Name="CauseOfConfirmations" EntityType="ipm.CauseOfConfirmation"/>
+                <EntitySet Name="MaintenanceOrders" EntityType="ipm.MaintenanceOrder"/>
+                <EntitySet Name="MaintenanceActivityTypes" EntityType="ipm.MaintenanceActivityType"/>
+                <EntitySet Name="ActionEventss" EntityType="ipm.ActionEvents"/>
+                <EntitySet Name="LongTextNotificationBatchs" EntityType="ipm.LongTextNotificationBatch"/>
+                <EntitySet Name="MaintenanceOrderPriorityTextAssociations" EntityType="ipm.MaintenanceOrderPriorityTextAssociation"/>
+                <EntitySet Name="LongTextOrders" EntityType="ipm.LongTextOrder"/>
+                <EntitySet Name="LongTextOrderBatchs" EntityType="ipm.LongTextOrderBatch"/>
+                <EntitySet Name="Confirmations" EntityType="ipm.Confirmation"/>
+                <EntitySet Name="ConfirmationTexts" EntityType="ipm.ConfirmationText"/>
+                <EntitySet Name="LongTextNotifications" EntityType="ipm.LongTextNotification"/>
+                <EntitySet Name="WorkCenterDescriptions" EntityType="ipm.WorkCenterDescription"/>
+                <EntitySet Name="EquipmentBatchss" EntityType="ipm.EquipmentBatchs"/>
+                <EntitySet Name="ListTechnicalEquipments" EntityType="ipm.ListTechnicalEquipment"/>
+                <EntitySet Name="Users" EntityType="ipm.User"/>
+                <EntitySet Name="OrderRuleTypeDataBatchs" EntityType="ipm.OrderRuleTypeDataBatch"/>
+                <EntitySet Name="InspectionCatalogCodeGroups" EntityType="ipm.InspectionCatalogCodeGroup"/>
+                <EntitySet Name="MaintenanceNotificationBatchs" EntityType="ipm.MaintenanceNotificationBatch"/>
+                <EntitySet Name="MaterialDescriptions" EntityType="ipm.MaterialDescription"/>
+                <EntitySet Name="MasterDataBatchs" EntityType="ipm.MasterDataBatch"/>
+                <EntitySet Name="MaintenanceOrderBatchs" EntityType="ipm.MaintenanceOrderBatch"/>
+                <EntitySet Name="CombinationOrderActivitys" EntityType="ipm.CombinationOrderActivity"/>
+                <EntitySet Name="Equipments" EntityType="ipm.Equipment"/>
+                <EntitySet Name="ConfigDataBatchs" EntityType="ipm.ConfigDataBatch"/>
+                <EntitySet Name="InspectionCatalogs" EntityType="ipm.InspectionCatalog"/>
+                <EntitySet Name="WorkCenters" EntityType="ipm.WorkCenter"/>
+                <EntitySet Name="NotificationTypeTexts" EntityType="ipm.NotificationTypeText"/>
+                <EntitySet Name="OperationMaterials" EntityType="ipm.OperationMaterial"/>
+                <EntitySet Name="LogSaps" EntityType="ipm.LogSap"/>
+                <EntitySet Name="InspectionCatalogCodes" EntityType="ipm.InspectionCatalogCode"/>
+                <EntitySet Name="ListTechnicalEquipmentBatchs" EntityType="ipm.ListTechnicalEquipmentBatch"/>
+                <EntitySet Name="LocalInstallStructures" EntityType="ipm.LocalInstallStructure"/>
+                <EntitySet Name="OrderTypeTexts" EntityType="ipm.OrderTypeText"/>
+                <EntitySet Name="DeletedEntitys" EntityType="ipm.DeletedEntity"/>
+                <EntitySet Name="MaintenanceOrderComponents" EntityType="ipm.MaintenanceOrderComponent"/>
+                <EntitySet Name="Parameterss" EntityType="ipm.Parameters"/>
+                <EntitySet Name="MaintenanceControlParameters" EntityType="ipm.MaintenanceControlParameter"/>
+                <EntitySet Name="MaintenanceOrderOperations" EntityType="ipm.MaintenanceOrderOperation"/>
+                <EntitySet Name="CatalogTypeBatchss" EntityType="ipm.CatalogTypeBatchs"/>
+                <EntitySet Name="MaintenanceNotifications" EntityType="ipm.MaintenanceNotification"/>
+                <AssociationSet Name="MaintenanceNotificationCause_CatalogType_One_ZeroToOne0Set" Association="ipm.MaintenanceNotificationCause_CatalogType_One_ZeroToOne0">
+                    <End EntitySet="MaintenanceNotificationCauses" Role="MaintenanceNotificationCause"/>
+                    <End EntitySet="CatalogTypes" Role="CatalogType"/>
+                </AssociationSet>
+                <AssociationSet Name="MaintenanceNotificationCause_MaintenanceNotificationItem_Many_ZeroToOne0Set" Association="ipm.MaintenanceNotificationCause_MaintenanceNotificationItem_Many_ZeroToOne0">
+                    <End EntitySet="MaintenanceNotificationCauses" Role="MaintenanceNotificationCause"/>
+                    <End EntitySet="MaintenanceNotificationItems" Role="MaintenanceNotificationItem"/>
+                </AssociationSet>
+                <AssociationSet Name="EnrollOrderType_OrderRuleType_One_ZeroToOne0Set" Association="ipm.EnrollOrderType_OrderRuleType_One_ZeroToOne0">
+                    <End EntitySet="EnrollOrderTypes" Role="EnrollOrderType"/>
+                    <End EntitySet="OrderRuleTypes" Role="OrderRuleType"/>
+                </AssociationSet>
+                <AssociationSet Name="EnrollOrderType_User_Many_ZeroToOne0Set" Association="ipm.EnrollOrderType_User_Many_ZeroToOne0">
+                    <End EntitySet="EnrollOrderTypes" Role="EnrollOrderType"/>
+                    <End EntitySet="Users" Role="User"/>
+                </AssociationSet>
+                <AssociationSet Name="MaintenanceNotificationItem_InspectionCatalogCode_One_ZeroToOne0Set" Association="ipm.MaintenanceNotificationItem_InspectionCatalogCode_One_ZeroToOne0">
+                    <End EntitySet="MaintenanceNotificationItems" Role="MaintenanceNotificationItem"/>
+                    <End EntitySet="InspectionCatalogCodes" Role="InspectionCatalogCode"/>
+                </AssociationSet>
+                <AssociationSet Name="MaintenanceNotificationItem_InspectionCatalogCodeGroup_One_ZeroToOne0Set" Association="ipm.MaintenanceNotificationItem_InspectionCatalogCodeGroup_One_ZeroToOne0">
+                    <End EntitySet="MaintenanceNotificationItems" Role="MaintenanceNotificationItem"/>
+                    <End EntitySet="InspectionCatalogCodeGroups" Role="InspectionCatalogCodeGroup"/>
+                </AssociationSet>
+                <AssociationSet Name="MaintenanceNotificationItem_MaintenanceNotification_Many_ZeroToOne0Set" Association="ipm.MaintenanceNotificationItem_MaintenanceNotification_Many_ZeroToOne0">
+                    <End EntitySet="MaintenanceNotificationItems" Role="MaintenanceNotificationItem"/>
+                    <End EntitySet="MaintenanceNotifications" Role="MaintenanceNotification"/>
+                </AssociationSet>
+                <AssociationSet Name="MaintenanceOrder_Equipment_Many_ZeroToOne0Set" Association="ipm.MaintenanceOrder_Equipment_Many_ZeroToOne0">
+                    <End EntitySet="MaintenanceOrders" Role="MaintenanceOrder"/>
+                    <End EntitySet="Equipments" Role="Equipment"/>
+                </AssociationSet>
+                <AssociationSet Name="MaintenanceOrder_ListTechnicalEquipment_One_ZeroToOne0Set" Association="ipm.MaintenanceOrder_ListTechnicalEquipment_One_ZeroToOne0">
+                    <End EntitySet="MaintenanceOrders" Role="MaintenanceOrder"/>
+                    <End EntitySet="ListTechnicalEquipments" Role="ListTechnicalEquipment"/>
+                </AssociationSet>
+                <AssociationSet Name="MaintenanceOrder_LocalInstallStructure_One_ZeroToOne0Set" Association="ipm.MaintenanceOrder_LocalInstallStructure_One_ZeroToOne0">
+                    <End EntitySet="MaintenanceOrders" Role="MaintenanceOrder"/>
+                    <End EntitySet="LocalInstallStructures" Role="LocalInstallStructure"/>
+                </AssociationSet>
+                <AssociationSet Name="MaintenanceOrder_CombinationOrderActivity_One_ZeroToOne0Set" Association="ipm.MaintenanceOrder_CombinationOrderActivity_One_ZeroToOne0">
+                    <End EntitySet="MaintenanceOrders" Role="MaintenanceOrder"/>
+                    <End EntitySet="CombinationOrderActivitys" Role="CombinationOrderActivity"/>
+                </AssociationSet>
+                <AssociationSet Name="MaintenanceOrder_MaintenanceActivityType_One_ZeroToOne0Set" Association="ipm.MaintenanceOrder_MaintenanceActivityType_One_ZeroToOne0">
+                    <End EntitySet="MaintenanceOrders" Role="MaintenanceOrder"/>
+                    <End EntitySet="MaintenanceActivityTypes" Role="MaintenanceActivityType"/>
+                </AssociationSet>
+                <AssociationSet Name="MaintenanceOrder_MaintenanceActivityType_Many_ZeroToOne0Set" Association="ipm.MaintenanceOrder_MaintenanceActivityType_Many_ZeroToOne0">
+                    <End EntitySet="MaintenanceOrders" Role="MaintenanceOrder"/>
+                    <End EntitySet="MaintenanceActivityTypes" Role="MaintenanceActivityType"/>
+                </AssociationSet>
+                <AssociationSet Name="MaintenanceOrder_MaintenanceControlParameter_One_ZeroToOne0Set" Association="ipm.MaintenanceOrder_MaintenanceControlParameter_One_ZeroToOne0">
+                    <End EntitySet="MaintenanceOrders" Role="MaintenanceOrder"/>
+                    <End EntitySet="MaintenanceControlParameters" Role="MaintenanceControlParameter"/>
+                </AssociationSet>
+                <AssociationSet Name="MaintenanceOrder_OrderTypeText_Many_ZeroToOne0Set" Association="ipm.MaintenanceOrder_OrderTypeText_Many_ZeroToOne0">
+                    <End EntitySet="MaintenanceOrders" Role="MaintenanceOrder"/>
+                    <End EntitySet="OrderTypeTexts" Role="OrderTypeText"/>
+                </AssociationSet>
+                <AssociationSet Name="MaintenanceOrder_WorkCenter_Many_ZeroToOne0Set" Association="ipm.MaintenanceOrder_WorkCenter_Many_ZeroToOne0">
+                    <End EntitySet="MaintenanceOrders" Role="MaintenanceOrder"/>
+                    <End EntitySet="WorkCenters" Role="WorkCenter"/>
+                </AssociationSet>
+                <AssociationSet Name="User_WorkCenter_Many_ZeroToOne0Set" Association="ipm.User_WorkCenter_Many_ZeroToOne0">
+                    <End EntitySet="Users" Role="User"/>
+                    <End EntitySet="WorkCenters" Role="WorkCenter"/>
+                </AssociationSet>
+                <AssociationSet Name="MaintenanceOrderComponent_MaintenanceOrderOperation_Many_ZeroToOne0Set" Association="ipm.MaintenanceOrderComponent_MaintenanceOrderOperation_Many_ZeroToOne0">
+                    <End EntitySet="MaintenanceOrderComponents" Role="MaintenanceOrderComponent"/>
+                    <End EntitySet="MaintenanceOrderOperations" Role="MaintenanceOrderOperation"/>
+                </AssociationSet>
+                <AssociationSet Name="MaintenanceOrder_MaintenanceOrderComponent_One_Many0Set" Association="ipm.MaintenanceOrder_MaintenanceOrderComponent_One_Many0">
+                    <End EntitySet="MaintenanceOrders" Role="MaintenanceOrder"/>
+                    <End EntitySet="MaintenanceOrderComponents" Role="MaintenanceOrderComponent"/>
+                </AssociationSet>
+                <AssociationSet Name="MaintenanceOrderOperation_LongTextOrder_One_ZeroToOne0Set" Association="ipm.MaintenanceOrderOperation_LongTextOrder_One_ZeroToOne0">
+                    <End EntitySet="MaintenanceOrderOperations" Role="MaintenanceOrderOperation"/>
+                    <End EntitySet="LongTextOrders" Role="LongTextOrder"/>
+                </AssociationSet>
+                <AssociationSet Name="MaintenanceOrder_MaintenanceOrderOperation_One_Many0Set" Association="ipm.MaintenanceOrder_MaintenanceOrderOperation_One_Many0">
+                    <End EntitySet="MaintenanceOrders" Role="MaintenanceOrder"/>
+                    <End EntitySet="MaintenanceOrderOperations" Role="MaintenanceOrderOperation"/>
+                </AssociationSet>
+                <AssociationSet Name="MaintenanceOrderOperation_WorkCenter_One_ZeroToOne0Set" Association="ipm.MaintenanceOrderOperation_WorkCenter_One_ZeroToOne0">
+                    <End EntitySet="MaintenanceOrderOperations" Role="MaintenanceOrderOperation"/>
+                    <End EntitySet="WorkCenters" Role="WorkCenter"/>
+                </AssociationSet>
+                <AssociationSet Name="MaintenanceNotification_ListTechnicalEquipment_One_ZeroToOne0Set" Association="ipm.MaintenanceNotification_ListTechnicalEquipment_One_ZeroToOne0">
+                    <End EntitySet="MaintenanceNotifications" Role="MaintenanceNotification"/>
+                    <End EntitySet="ListTechnicalEquipments" Role="ListTechnicalEquipment"/>
+                </AssociationSet>
+                <AssociationSet Name="MaintenanceNotification_LocalInstallStructure_One_ZeroToOne0Set" Association="ipm.MaintenanceNotification_LocalInstallStructure_One_ZeroToOne0">
+                    <End EntitySet="MaintenanceNotifications" Role="MaintenanceNotification"/>
+                    <End EntitySet="LocalInstallStructures" Role="LocalInstallStructure"/>
+                </AssociationSet>
+                <AssociationSet Name="MaintenanceNotification_LongTextNotification_One_ZeroToOne0Set" Association="ipm.MaintenanceNotification_LongTextNotification_One_ZeroToOne0">
+                    <End EntitySet="MaintenanceNotifications" Role="MaintenanceNotification"/>
+                    <End EntitySet="LongTextNotifications" Role="LongTextNotification"/>
+                </AssociationSet>
+                <AssociationSet Name="MaintenanceNotification_Equipment_Many_ZeroToOne0Set" Association="ipm.MaintenanceNotification_Equipment_Many_ZeroToOne0">
+                    <End EntitySet="MaintenanceNotifications" Role="MaintenanceNotification"/>
+                    <End EntitySet="Equipments" Role="Equipment"/>
+                </AssociationSet>
+                <AssociationSet Name="MaintenanceNotification_NotificationTypeText_One_ZeroToOne0Set" Association="ipm.MaintenanceNotification_NotificationTypeText_One_ZeroToOne0">
+                    <End EntitySet="MaintenanceNotifications" Role="MaintenanceNotification"/>
+                    <End EntitySet="NotificationTypeTexts" Role="NotificationTypeText"/>
+                </AssociationSet>
+                <AssociationSet Name="MaintenanceNotification_WorkCenter_One_ZeroToOne0Set" Association="ipm.MaintenanceNotification_WorkCenter_One_ZeroToOne0">
+                    <End EntitySet="MaintenanceNotifications" Role="MaintenanceNotification"/>
+                    <End EntitySet="WorkCenters" Role="WorkCenter"/>
+                </AssociationSet>
+                <AssociationSet Name="ConfigDataBatch_User_One_Many0Set" Association="ipm.ConfigDataBatch_User_One_Many0">
+                    <End EntitySet="ConfigDataBatchs" Role="ConfigDataBatch"/>
+                    <End EntitySet="Users" Role="User"/>
+                </AssociationSet>
+                <AssociationSet Name="ListTechnicalEquipmentBatch_ListTechnicalEquipment_One_Many0Set" Association="ipm.ListTechnicalEquipmentBatch_ListTechnicalEquipment_One_Many0">
+                    <End EntitySet="ListTechnicalEquipmentBatchs" Role="ListTechnicalEquipmentBatch"/>
+                    <End EntitySet="ListTechnicalEquipments" Role="ListTechnicalEquipment"/>
+                </AssociationSet>
+                <AssociationSet Name="MaintenanceOrderOperation_Confirmation_One_Many0Set" Association="ipm.MaintenanceOrderOperation_Confirmation_One_Many0">
+                    <End EntitySet="MaintenanceOrderOperations" Role="MaintenanceOrderOperation"/>
+                    <End EntitySet="Confirmations" Role="Confirmation"/>
+                </AssociationSet>
+                <AssociationSet Name="MasterDataBatch_MaintenanceControlParameter_One_Many0Set" Association="ipm.MasterDataBatch_MaintenanceControlParameter_One_Many0">
+                    <End EntitySet="MasterDataBatchs" Role="MasterDataBatch"/>
+                    <End EntitySet="MaintenanceControlParameters" Role="MaintenanceControlParameter"/>
+                </AssociationSet>
+                <AssociationSet Name="MasterDataBatch_CatalogType_One_Many0Set" Association="ipm.MasterDataBatch_CatalogType_One_Many0">
+                    <End EntitySet="MasterDataBatchs" Role="MasterDataBatch"/>
+                    <End EntitySet="CatalogTypes" Role="CatalogType"/>
+                </AssociationSet>
+                <AssociationSet Name="MasterDataBatch_MaintenanceActivityType_One_Many0Set" Association="ipm.MasterDataBatch_MaintenanceActivityType_One_Many0">
+                    <End EntitySet="MasterDataBatchs" Role="MasterDataBatch"/>
+                    <End EntitySet="MaintenanceActivityTypes" Role="MaintenanceActivityType"/>
+                </AssociationSet>
+                <AssociationSet Name="OrderRuleTypeDataBatch_OrderRuleType_One_Many0Set" Association="ipm.OrderRuleTypeDataBatch_OrderRuleType_One_Many0">
+                    <End EntitySet="OrderRuleTypeDataBatchs" Role="OrderRuleTypeDataBatch"/>
+                    <End EntitySet="OrderRuleTypes" Role="OrderRuleType"/>
+                </AssociationSet>
+                <AssociationSet Name="MasterDataBatch_InspectionCatalogCodeGroup_One_Many0Set" Association="ipm.MasterDataBatch_InspectionCatalogCodeGroup_One_Many0">
+                    <End EntitySet="MasterDataBatchs" Role="MasterDataBatch"/>
+                    <End EntitySet="InspectionCatalogCodeGroups" Role="InspectionCatalogCodeGroup"/>
+                </AssociationSet>
+                <AssociationSet Name="MasterDataBatch_MaterialDescription_One_Many0Set" Association="ipm.MasterDataBatch_MaterialDescription_One_Many0">
+                    <End EntitySet="MasterDataBatchs" Role="MasterDataBatch"/>
+                    <End EntitySet="MaterialDescriptions" Role="MaterialDescription"/>
+                </AssociationSet>
+                <AssociationSet Name="MasterDataBatch_LocalInstallStructure_One_Many0Set" Association="ipm.MasterDataBatch_LocalInstallStructure_One_Many0">
+                    <End EntitySet="MasterDataBatchs" Role="MasterDataBatch"/>
+                    <End EntitySet="LocalInstallStructures" Role="LocalInstallStructure"/>
+                </AssociationSet>
+                <AssociationSet Name="MaintenanceNotificationBatch_MaintenanceNotification_One_Many0Set" Association="ipm.MaintenanceNotificationBatch_MaintenanceNotification_One_Many0">
+                    <End EntitySet="MaintenanceNotificationBatchs" Role="MaintenanceNotificationBatch"/>
+                    <End EntitySet="MaintenanceNotifications" Role="MaintenanceNotification"/>
+                </AssociationSet>
+                <AssociationSet Name="MasterDataBatch_NotificationTypeText_One_Many0Set" Association="ipm.MasterDataBatch_NotificationTypeText_One_Many0">
+                    <End EntitySet="MasterDataBatchs" Role="MasterDataBatch"/>
+                    <End EntitySet="NotificationTypeTexts" Role="NotificationTypeText"/>
+                </AssociationSet>
+                <AssociationSet Name="MasterDataBatch_OrderTypeText_One_Many0Set" Association="ipm.MasterDataBatch_OrderTypeText_One_Many0">
+                    <End EntitySet="MasterDataBatchs" Role="MasterDataBatch"/>
+                    <End EntitySet="OrderTypeTexts" Role="OrderTypeText"/>
+                </AssociationSet>
+                <AssociationSet Name="MasterDataBatch_Employee_One_Many0Set" Association="ipm.MasterDataBatch_Employee_One_Many0">
+                    <End EntitySet="MasterDataBatchs" Role="MasterDataBatch"/>
+                    <End EntitySet="Employees" Role="Employee"/>
+                </AssociationSet>
+                <AssociationSet Name="MasterDataBatch_PriorityText_One_Many0Set" Association="ipm.MasterDataBatch_PriorityText_One_Many0">
+                    <End EntitySet="MasterDataBatchs" Role="MasterDataBatch"/>
+                    <End EntitySet="PriorityTexts" Role="PriorityText"/>
+                </AssociationSet>
+                <AssociationSet Name="MasterDataBatch_InspectionCatalogCode_One_Many0Set" Association="ipm.MasterDataBatch_InspectionCatalogCode_One_Many0">
+                    <End EntitySet="MasterDataBatchs" Role="MasterDataBatch"/>
+                    <End EntitySet="InspectionCatalogCodes" Role="InspectionCatalogCode"/>
+                </AssociationSet>
+                <AssociationSet Name="MasterDataBatch_Equipment_One_Many0Set" Association="ipm.MasterDataBatch_Equipment_One_Many0">
+                    <End EntitySet="MasterDataBatchs" Role="MasterDataBatch"/>
+                    <End EntitySet="Equipments" Role="Equipment"/>
+                </AssociationSet>
+                <AssociationSet Name="LongTextNotificationBatch_LongTextNotification_One_Many0Set" Association="ipm.LongTextNotificationBatch_LongTextNotification_One_Many0">
+                    <End EntitySet="LongTextNotificationBatchs" Role="LongTextNotificationBatch"/>
+                    <End EntitySet="LongTextNotifications" Role="LongTextNotification"/>
+                </AssociationSet>
+                <AssociationSet Name="MasterDataBatch_ListTechnicalEquipment_One_Many0Set" Association="ipm.MasterDataBatch_ListTechnicalEquipment_One_Many0">
+                    <End EntitySet="MasterDataBatchs" Role="MasterDataBatch"/>
+                    <End EntitySet="ListTechnicalEquipments" Role="ListTechnicalEquipment"/>
+                </AssociationSet>
+                <AssociationSet Name="EquipmentBatchs_Equipment_One_Many0Set" Association="ipm.EquipmentBatchs_Equipment_One_Many0">
+                    <End EntitySet="EquipmentBatchss" Role="EquipmentBatchs"/>
+                    <End EntitySet="Equipments" Role="Equipment"/>
+                </AssociationSet>
+                <AssociationSet Name="MaintenanceOrderBatch_MaintenanceOrder_One_Many0Set" Association="ipm.MaintenanceOrderBatch_MaintenanceOrder_One_Many0">
+                    <End EntitySet="MaintenanceOrderBatchs" Role="MaintenanceOrderBatch"/>
+                    <End EntitySet="MaintenanceOrders" Role="MaintenanceOrder"/>
+                </AssociationSet>
+                <AssociationSet Name="LongTextOrderBatch_LongTextOrder_One_Many0Set" Association="ipm.LongTextOrderBatch_LongTextOrder_One_Many0">
+                    <End EntitySet="LongTextOrderBatchs" Role="LongTextOrderBatch"/>
+                    <End EntitySet="LongTextOrders" Role="LongTextOrder"/>
+                </AssociationSet>
+                <AssociationSet Name="CatalogTypeBatchs_CatalogType_One_Many0Set" Association="ipm.CatalogTypeBatchs_CatalogType_One_Many0">
+                    <End EntitySet="CatalogTypeBatchss" Role="CatalogTypeBatchs"/>
+                    <End EntitySet="CatalogTypes" Role="CatalogType"/>
+                </AssociationSet>
+                <AssociationSet Name="MasterDataBatch_CauseOfConfirmation_One_Many0Set" Association="ipm.MasterDataBatch_CauseOfConfirmation_One_Many0">
+                    <End EntitySet="MasterDataBatchs" Role="MasterDataBatch"/>
+                    <End EntitySet="CauseOfConfirmations" Role="CauseOfConfirmation"/>
+                </AssociationSet>
+                <AssociationSet Name="MasterDataBatch_WorkCenter_One_Many0Set" Association="ipm.MasterDataBatch_WorkCenter_One_Many0">
+                    <End EntitySet="MasterDataBatchs" Role="MasterDataBatch"/>
+                    <End EntitySet="WorkCenters" Role="WorkCenter"/>
+                </AssociationSet>
+                <AssociationSet Name="MasterDataBatch_CombinationOrderActivity_One_Many0Set" Association="ipm.MasterDataBatch_CombinationOrderActivity_One_Many0">
+                    <End EntitySet="MasterDataBatchs" Role="MasterDataBatch"/>
+                    <End EntitySet="CombinationOrderActivitys" Role="CombinationOrderActivity"/>
+                </AssociationSet>
+            </EntityContainer>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

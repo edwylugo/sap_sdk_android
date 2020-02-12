@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context=".mdui.inspectioncatalogcodegroups.InspectionCatalogCodeGroupsActivity">
+    <data>
+        <import type = "com.sap.cloud.android.odata.ipmcontainer.InspectionCatalogCodeGroup" />
+        <variable name="inspectionCatalogCodeGroup" type="InspectionCatalogCodeGroup"/>
+        <variable name="handler" type="com.company.mysapcpsdkproject.mdui.inspectioncatalogcodegroups.InspectionCatalogCodeGroupsDetailFragment" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="Catalog"
+            app:valueText="@{inspectionCatalogCodeGroup.getOptionalValue(InspectionCatalogCodeGroup.catalog).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="CodeGroup"
+            app:valueText="@{inspectionCatalogCodeGroup.getOptionalValue(InspectionCatalogCodeGroup.codeGroup).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="DataRecordUsed"
+            app:valueText="@{inspectionCatalogCodeGroup.getOptionalValue(InspectionCatalogCodeGroup.dataRecordUsed).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="ShortText"
+            app:valueText="@{inspectionCatalogCodeGroup.getOptionalValue(InspectionCatalogCodeGroup.shortText).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="StatusCodeGroup"
+            app:valueText="@{inspectionCatalogCodeGroup.getOptionalValue(InspectionCatalogCodeGroup.statusCodeGroup).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="StatusMasterRecord"
+            app:valueText="@{inspectionCatalogCodeGroup.getOptionalValue(InspectionCatalogCodeGroup.statusMasterRecord).toString()}" />
+
+    </LinearLayout>
+</layout>

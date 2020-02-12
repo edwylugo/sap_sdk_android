@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context=".mdui.confirmations.ConfirmationsActivity">
+    <data>
+        <import type = "com.sap.cloud.android.odata.ipmcontainer.Confirmation" />
+        <variable name="confirmation" type="Confirmation"/>
+        <variable name="handler" type="com.company.mysapcpsdkproject.mdui.confirmations.ConfirmationsDetailFragment" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="Id"
+            app:valueText="@{confirmation.getOptionalValue(Confirmation.id).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="OperationNumber"
+            app:valueText="@{confirmation.getOptionalValue(Confirmation.operationNumber).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="OrderNumber"
+            app:valueText="@{confirmation.getOptionalValue(Confirmation.orderNumber).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="SubOperation"
+            app:valueText="@{confirmation.getOptionalValue(Confirmation.subOperation).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="ActivityTypeConfirmation"
+            app:valueText="@{confirmation.getOptionalValue(Confirmation.activityTypeConfirmation).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="ActualDurationConfirmation"
+            app:valueText="@{confirmation.getOptionalValue(Confirmation.actualDurationConfirmation).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="ActualWork"
+            app:valueText="@{confirmation.getOptionalValue(Confirmation.actualWork).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="ClearOpenReservations"
+            app:valueText="@{confirmation.getOptionalValue(Confirmation.clearOpenReservations).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="ConfirmationCounter"
+            app:valueText="@{confirmation.getOptionalValue(Confirmation.confirmationCounter).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="ConfirmationNumber"
+            app:valueText="@{confirmation.getOptionalValue(Confirmation.confirmationNumber).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="ConfirmationText"
+            app:valueText="@{confirmation.getOptionalValue(Confirmation.confirmationText).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="ConfirmedDateExecutionFinish"
+            app:valueText="@{confirmation.getOptionalValue(Confirmation.confirmedDateExecutionFinish).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="ConfirmedDateStartExecution"
+            app:valueText="@{confirmation.getOptionalValue(Confirmation.confirmedDateStartExecution).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="ConfirmedTimeFinishExecution"
+            app:valueText="@{confirmation.getOptionalValue(Confirmation.confirmedTimeFinishExecution).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="ConfirmedTimeStartExecution"
+            app:valueText="@{confirmation.getOptionalValue(Confirmation.confirmedTimeStartExecution).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="CreateTime"
+            app:valueText="@{confirmation.getOptionalValue(Confirmation.createTime).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="CreationData"
+            app:valueText="@{confirmation.getOptionalValue(Confirmation.creationData).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="DocumentReversed"
+            app:valueText="@{confirmation.getOptionalValue(Confirmation.documentReversed).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="FinalConfirmation"
+            app:valueText="@{confirmation.getOptionalValue(Confirmation.finalConfirmation).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="ForecastFinishDateOperation"
+            app:valueText="@{confirmation.getOptionalValue(Confirmation.forecastFinishDateOperation).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="ForecastFinishTimeOperation"
+            app:valueText="@{confirmation.getOptionalValue(Confirmation.forecastFinishTimeOperation).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="NoRemainingWorkExpected"
+            app:valueText="@{confirmation.getOptionalValue(Confirmation.noRemainingWorkExpected).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="OwnerRequestTask"
+            app:valueText="@{confirmation.getOptionalValue(Confirmation.ownerRequestTask).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="PersonnelNumber"
+            app:valueText="@{confirmation.getOptionalValue(Confirmation.personnelNumber).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="Plant"
+            app:valueText="@{confirmation.getOptionalValue(Confirmation.plant).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="PostingDate"
+            app:valueText="@{confirmation.getOptionalValue(Confirmation.postingDate).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="ReasonForVariance"
+            app:valueText="@{confirmation.getOptionalValue(Confirmation.reasonForVariance).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="UnitActualDuration"
+            app:valueText="@{confirmation.getOptionalValue(Confirmation.unitActualDuration).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="UnitForWork"
+            app:valueText="@{confirmation.getOptionalValue(Confirmation.unitForWork).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="WorkCenter"
+            app:valueText="@{confirmation.getOptionalValue(Confirmation.workCenter).toString()}" />
+
+    </LinearLayout>
+</layout>

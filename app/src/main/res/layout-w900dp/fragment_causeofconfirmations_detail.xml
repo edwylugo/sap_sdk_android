@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context=".mdui.causeofconfirmations.CauseOfConfirmationsActivity">
+    <data>
+        <import type = "com.sap.cloud.android.odata.ipmcontainer.CauseOfConfirmation" />
+        <variable name="causeOfConfirmation" type="CauseOfConfirmation"/>
+        <variable name="handler" type="com.company.mysapcpsdkproject.mdui.causeofconfirmations.CauseOfConfirmationsDetailFragment" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="Plant"
+            app:valueText="@{causeOfConfirmation.getOptionalValue(CauseOfConfirmation.plant).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="ReasonForVariance"
+            app:valueText="@{causeOfConfirmation.getOptionalValue(CauseOfConfirmation.reasonForVariance).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="DescribingReasonConfirmation"
+            app:valueText="@{causeOfConfirmation.getOptionalValue(CauseOfConfirmation.describingReasonConfirmation).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="LanguageKey"
+            app:valueText="@{causeOfConfirmation.getOptionalValue(CauseOfConfirmation.languageKey).toString()}" />
+
+    </LinearLayout>
+</layout>

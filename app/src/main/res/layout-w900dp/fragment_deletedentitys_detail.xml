@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context=".mdui.deletedentitys.DeletedEntitysActivity">
+    <data>
+        <import type = "com.sap.cloud.android.odata.ipmcontainer.DeletedEntity" />
+        <variable name="deletedEntity" type="DeletedEntity"/>
+        <variable name="handler" type="com.company.mysapcpsdkproject.mdui.deletedentitys.DeletedEntitysDetailFragment" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="Id"
+            app:valueText="@{deletedEntity.getOptionalValue(DeletedEntity.id).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="DeletedEntryID"
+            app:valueText="@{deletedEntity.getOptionalValue(DeletedEntity.deletedEntryID).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="EntityType_"
+            app:valueText="@{deletedEntity.getOptionalValue(DeletedEntity.entityType_).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="RemovalDate"
+            app:valueText="@{deletedEntity.getOptionalValue(DeletedEntity.removalDate).toString()}" />
+
+    </LinearLayout>
+</layout>

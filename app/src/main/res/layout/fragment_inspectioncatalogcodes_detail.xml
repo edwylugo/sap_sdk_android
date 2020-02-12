@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context=".mdui.inspectioncatalogcodes.InspectionCatalogCodesActivity">
+    <data>
+        <import type = "com.sap.cloud.android.odata.ipmcontainer.InspectionCatalogCode" />
+        <variable name="inspectionCatalogCode" type="InspectionCatalogCode"/>
+        <variable name="handler" type="com.company.mysapcpsdkproject.mdui.inspectioncatalogcodes.InspectionCatalogCodesDetailFragment" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.core.widget.NestedScrollView
+                android:id="@+id/item_detail_container"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fillViewport="true"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:keyText="Catalog"
+                        app:valueText="@{inspectionCatalogCode.getOptionalValue(InspectionCatalogCode.catalog).toString()}" />
+
+                    <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:keyText="Code"
+                        app:valueText="@{inspectionCatalogCode.getOptionalValue(InspectionCatalogCode.code).toString()}" />
+
+                    <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:keyText="CodeGroup"
+                        app:valueText="@{inspectionCatalogCode.getOptionalValue(InspectionCatalogCode.codeGroup).toString()}" />
+
+                    <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:keyText="DataRecordDeleted"
+                        app:valueText="@{inspectionCatalogCode.getOptionalValue(InspectionCatalogCode.dataRecordDeleted).toString()}" />
+
+                    <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:keyText="DataRecordIsUsed"
+                        app:valueText="@{inspectionCatalogCode.getOptionalValue(InspectionCatalogCode.dataRecordIsUsed).toString()}" />
+
+                    <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:keyText="DefectClass"
+                        app:valueText="@{inspectionCatalogCode.getOptionalValue(InspectionCatalogCode.defectClass).toString()}" />
+
+                    <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:keyText="FollowUpAction"
+                        app:valueText="@{inspectionCatalogCode.getOptionalValue(InspectionCatalogCode.followUpAction).toString()}" />
+
+                    <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:keyText="ShortText"
+                        app:valueText="@{inspectionCatalogCode.getOptionalValue(InspectionCatalogCode.shortText).toString()}" />
+
+                    <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:keyText="StatusOfCodeGroup"
+                        app:valueText="@{inspectionCatalogCode.getOptionalValue(InspectionCatalogCode.statusOfCodeGroup).toString()}" />
+
+                    <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:keyText="ValidFromDate"
+                        app:valueText="@{inspectionCatalogCode.getOptionalValue(InspectionCatalogCode.validFromDate).toString()}" />
+
+                    <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:keyText="VersionNumber"
+                        app:valueText="@{inspectionCatalogCode.getOptionalValue(InspectionCatalogCode.versionNumber).toString()}" />
+
+                </LinearLayout>
+            </androidx.core.widget.NestedScrollView>
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+    </LinearLayout>
+</layout>

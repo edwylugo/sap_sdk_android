@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context=".mdui.longtextnotifications.LongTextNotificationsActivity">
+    <data>
+        <import type = "com.sap.cloud.android.odata.ipmcontainer.LongTextNotification" />
+        <variable name="longTextNotification" type="LongTextNotification"/>
+        <variable name="handler" type="com.company.mysapcpsdkproject.mdui.longtextnotifications.LongTextNotificationsDetailFragment" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="NotificationNo"
+            app:valueText="@{longTextNotification.getOptionalValue(LongTextNotification.notificationNo).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="LongText"
+            app:valueText="@{longTextNotification.getOptionalValue(LongTextNotification.longText).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="TagColumn"
+            app:valueText="@{longTextNotification.getOptionalValue(LongTextNotification.tagColumn).toString()}" />
+
+    </LinearLayout>
+</layout>

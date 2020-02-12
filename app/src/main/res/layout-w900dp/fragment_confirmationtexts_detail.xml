@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context=".mdui.confirmationtexts.ConfirmationTextsActivity">
+    <data>
+        <import type = "com.sap.cloud.android.odata.ipmcontainer.ConfirmationText" />
+        <variable name="confirmationText" type="ConfirmationText"/>
+        <variable name="handler" type="com.company.mysapcpsdkproject.mdui.confirmationtexts.ConfirmationTextsDetailFragment" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="CauseOfDeviation"
+            app:valueText="@{confirmationText.getOptionalValue(ConfirmationText.causeOfDeviation).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="Center"
+            app:valueText="@{confirmationText.getOptionalValue(ConfirmationText.center).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="DeviationReasonText"
+            app:valueText="@{confirmationText.getOptionalValue(ConfirmationText.deviationReasonText).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="LanguageCode"
+            app:valueText="@{confirmationText.getOptionalValue(ConfirmationText.languageCode).toString()}" />
+
+    </LinearLayout>
+</layout>

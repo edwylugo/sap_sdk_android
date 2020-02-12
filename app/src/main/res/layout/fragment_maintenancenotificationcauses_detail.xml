@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context=".mdui.maintenancenotificationcauses.MaintenanceNotificationCausesActivity">
+    <data>
+        <import type = "com.sap.cloud.android.odata.ipmcontainer.MaintenanceNotificationCause" />
+        <variable name="maintenanceNotificationCause" type="MaintenanceNotificationCause"/>
+        <variable name="handler" type="com.company.mysapcpsdkproject.mdui.maintenancenotificationcauses.MaintenanceNotificationCausesDetailFragment" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.core.widget.NestedScrollView
+                android:id="@+id/item_detail_container"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fillViewport="true"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:keyText="ItemNumber"
+                        app:valueText="@{maintenanceNotificationCause.getOptionalValue(MaintenanceNotificationCause.itemNumber).toString()}" />
+
+                    <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:keyText="NotificationNo"
+                        app:valueText="@{maintenanceNotificationCause.getOptionalValue(MaintenanceNotificationCause.notificationNo).toString()}" />
+
+                    <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:keyText="SequentialNumberCause"
+                        app:valueText="@{maintenanceNotificationCause.getOptionalValue(MaintenanceNotificationCause.sequentialNumberCause).toString()}" />
+
+                    <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:keyText="CatalogProfile"
+                        app:valueText="@{maintenanceNotificationCause.getOptionalValue(MaintenanceNotificationCause.catalogProfile).toString()}" />
+
+                    <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:keyText="CatalogTypeCauses"
+                        app:valueText="@{maintenanceNotificationCause.getOptionalValue(MaintenanceNotificationCause.catalogTypeCauses).toString()}" />
+
+                    <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:keyText="CauseCode"
+                        app:valueText="@{maintenanceNotificationCause.getOptionalValue(MaintenanceNotificationCause.causeCode).toString()}" />
+
+                    <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:keyText="CauseCodeShortText"
+                        app:valueText="@{maintenanceNotificationCause.getOptionalValue(MaintenanceNotificationCause.causeCodeShortText).toString()}" />
+
+                    <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:keyText="CauseText"
+                        app:valueText="@{maintenanceNotificationCause.getOptionalValue(MaintenanceNotificationCause.causeText).toString()}" />
+
+                    <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:keyText="CodeGroupCauses"
+                        app:valueText="@{maintenanceNotificationCause.getOptionalValue(MaintenanceNotificationCause.codeGroupCauses).toString()}" />
+
+                    <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:keyText="DateRecordCreated"
+                        app:valueText="@{maintenanceNotificationCause.getOptionalValue(MaintenanceNotificationCause.dateRecordCreated).toString()}" />
+
+                    <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:keyText="DeleteDataRecord"
+                        app:valueText="@{maintenanceNotificationCause.getOptionalValue(MaintenanceNotificationCause.deleteDataRecord).toString()}" />
+
+                    <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:keyText="LanguageIndicatorText"
+                        app:valueText="@{maintenanceNotificationCause.getOptionalValue(MaintenanceNotificationCause.languageIndicatorText).toString()}" />
+
+                    <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:keyText="NamePersonCreatedObject"
+                        app:valueText="@{maintenanceNotificationCause.getOptionalValue(MaintenanceNotificationCause.namePersonCreatedObject).toString()}" />
+
+                    <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:keyText="ObjectLongTextAvailable"
+                        app:valueText="@{maintenanceNotificationCause.getOptionalValue(MaintenanceNotificationCause.objectLongTextAvailable).toString()}" />
+
+                    <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:keyText="ShortDescriptionCodeGroup"
+                        app:valueText="@{maintenanceNotificationCause.getOptionalValue(MaintenanceNotificationCause.shortDescriptionCodeGroup).toString()}" />
+
+                    <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:keyText="SortNumberCause"
+                        app:valueText="@{maintenanceNotificationCause.getOptionalValue(MaintenanceNotificationCause.sortNumberCause).toString()}" />
+
+                    <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:keyText="TimeChange"
+                        app:valueText="@{maintenanceNotificationCause.getOptionalValue(MaintenanceNotificationCause.timeChange).toString()}" />
+
+                    <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:keyText="TimeRecordAdded"
+                        app:valueText="@{maintenanceNotificationCause.getOptionalValue(MaintenanceNotificationCause.timeRecordAdded).toString()}" />
+
+                    <RelativeLayout
+                        style="@style/FioriButton.Flat"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                        android:onClick="@{handler::onNavigationClickedToCatalogTypes_CatalogTypeDetails}"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/link_label_to_catalogtypedetails"
+                            style="@style/FioriButton.Flat"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_centerInParent="true"
+                            android:clickable="false"
+                            android:focusable="false"
+                            android:paddingLeft="16dp"
+                            android:text="CatalogTypes" />
+
+                        <Button
+                            android:id="@+id/link_button_to_catalogtypedetails"
+                            style="@style/FioriButton.Flat"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerInParent="true"
+                            android:clickable="false"
+                            android:drawableStart="@drawable/ic_arrow_forward_black_24dp"
+                            android:enabled="true"
+                            android:focusable="false" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        style="@style/FioriButton.Flat"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                        android:onClick="@{handler::onNavigationClickedToMaintenanceNotificationItems_MaintenanceNotificationItemDetails}"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/link_label_to_maintenancenotificationitemdetails"
+                            style="@style/FioriButton.Flat"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_centerInParent="true"
+                            android:clickable="false"
+                            android:focusable="false"
+                            android:paddingLeft="16dp"
+                            android:text="MaintenanceNotificationItems" />
+
+                        <Button
+                            android:id="@+id/link_button_to_maintenancenotificationitemdetails"
+                            style="@style/FioriButton.Flat"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerInParent="true"
+                            android:clickable="false"
+                            android:drawableStart="@drawable/ic_arrow_forward_black_24dp"
+                            android:enabled="true"
+                            android:focusable="false" />
+                    </RelativeLayout>
+
+                </LinearLayout>
+            </androidx.core.widget.NestedScrollView>
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+    </LinearLayout>
+</layout>

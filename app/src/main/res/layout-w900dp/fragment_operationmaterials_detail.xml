@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context=".mdui.operationmaterials.OperationMaterialsActivity">
+    <data>
+        <import type = "com.sap.cloud.android.odata.ipmcontainer.OperationMaterial" />
+        <variable name="operationMaterial" type="OperationMaterial"/>
+        <variable name="handler" type="com.company.mysapcpsdkproject.mdui.operationmaterials.OperationMaterialsDetailFragment" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="MaintenanceOrder"
+            app:valueText="@{operationMaterial.getOptionalValue(OperationMaterial.maintenanceOrder).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="MaintenanceOrderComponent"
+            app:valueText="@{operationMaterial.getOptionalValue(OperationMaterial.maintenanceOrderComponent).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="MaintenanceOrderOperation"
+            app:valueText="@{operationMaterial.getOptionalValue(OperationMaterial.maintenanceOrderOperation).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="BaseUnit"
+            app:valueText="@{operationMaterial.getOptionalValue(OperationMaterial.baseUnit).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="ItemComponentDescription"
+            app:valueText="@{operationMaterial.getOptionalValue(OperationMaterial.itemComponentDescription).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="Material"
+            app:valueText="@{operationMaterial.getOptionalValue(OperationMaterial.material).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="RequirementQuantityInBaseUnit"
+            app:valueText="@{operationMaterial.getOptionalValue(OperationMaterial.requirementQuantityInBaseUnit).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="StorageLocation"
+            app:valueText="@{operationMaterial.getOptionalValue(OperationMaterial.storageLocation).toString()}" />
+
+    </LinearLayout>
+</layout>

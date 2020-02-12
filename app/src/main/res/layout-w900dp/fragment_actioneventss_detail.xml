@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context=".mdui.actioneventss.ActionEventssActivity">
+    <data>
+        <import type = "com.sap.cloud.android.odata.ipmcontainer.ActionEvents" />
+        <variable name="actionEvents" type="ActionEvents"/>
+        <variable name="handler" type="com.company.mysapcpsdkproject.mdui.actioneventss.ActionEventssDetailFragment" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="IdEvents"
+            app:valueText="@{actionEvents.getOptionalValue(ActionEvents.idEvents).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="ActionEventsType"
+            app:valueText="@{actionEvents.getOptionalValue(ActionEvents.actionEventsType).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="Counter"
+            app:valueText="@{actionEvents.getOptionalValue(ActionEvents.counter).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="Entity"
+            app:valueText="@{actionEvents.getOptionalValue(ActionEvents.entity).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="IosGetdata"
+            app:valueText="@{actionEvents.getOptionalValue(ActionEvents.iosGetdata).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="IpmStructure"
+            app:valueText="@{actionEvents.getOptionalValue(ActionEvents.ipmStructure).toString()}" />
+
+        <com.sap.cloud.mobile.fiori.misc.KeyValueCell
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:keyText="Suser"
+            app:valueText="@{actionEvents.getOptionalValue(ActionEvents.suser).toString()}" />
+
+    </LinearLayout>
+</layout>

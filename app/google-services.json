@@ -1,0 +1,98 @@
+{
+  "project_info": {
+    "project_number": "1010537804854",
+    "firebase_url": "https://ipm-stihl.firebaseio.com",
+    "project_id": "ipm-stihl",
+    "storage_bucket": "ipm-stihl.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1010537804854:android:21aeee8aeb1f8091c51497",
+        "android_client_info": {
+          "package_name": "com.company.myapppushnotification"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1010537804854-1aeh72efebkg48ag58gi6q4uj1fn57rr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBw4aV06Tiv5qh2Uik0GVKfT7rxV213Hxw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1010537804854-1aeh72efebkg48ag58gi6q4uj1fn57rr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1010537804854:android:82b3350cc74afd37c51497",
+        "android_client_info": {
+          "package_name": "com.company.mypushnotification"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1010537804854-1aeh72efebkg48ag58gi6q4uj1fn57rr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBw4aV06Tiv5qh2Uik0GVKfT7rxV213Hxw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1010537804854-1aeh72efebkg48ag58gi6q4uj1fn57rr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1010537804854:android:c8d08f57ff7c79bac51497",
+        "android_client_info": {
+          "package_name": "com.company.mysapcpsdkproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1010537804854-1aeh72efebkg48ag58gi6q4uj1fn57rr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBw4aV06Tiv5qh2Uik0GVKfT7rxV213Hxw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1010537804854-1aeh72efebkg48ag58gi6q4uj1fn57rr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
